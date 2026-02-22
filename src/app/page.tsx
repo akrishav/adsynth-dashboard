@@ -106,6 +106,7 @@ export default function LandingPage() {
       <div className="border-y border-slate-100 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-wrap justify-center gap-8 md:gap-16 text-slate-400 text-sm font-semibold uppercase tracking-wider items-center">
           <span className="flex items-center gap-2"><ShieldCheck size={16} /> GDPR Compliant</span>
+          <span className="flex items-center gap-2"><ShieldCheck size={16} /> BSI Compliant</span>
           <span className="flex items-center gap-2"><Lock size={16} /> SOC2 Type II</span>
           <span className="flex items-center gap-2"><Server size={16} /> FinTech Secure</span>
           <span className="flex items-center gap-2"><Database size={16} /> HIPAA Ready</span>
