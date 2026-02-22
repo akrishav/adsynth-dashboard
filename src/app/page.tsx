@@ -260,7 +260,7 @@ export default function LandingPage() {
           </div>
 
           <div className="border-t border-slate-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
-            <p>© 2024 AdSynth Data Systems, Inc. All rights reserved.</p>
+            <p>© 2026 AdSynth Data Systems, Inc. All rights reserved.</p>
             <div className="flex items-center space-x-2 mt-4 md:mt-0">
               <span className="w-2 h-2 rounded-full bg-green-500"></span>
               <span>ALL SYSTEMS OPERATIONAL</span>
