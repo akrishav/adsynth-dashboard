@@ -21,7 +21,7 @@ export default function AuthLayout({
                     <span>REGION: US-EAST-1</span>
                 </div>
                 <div>
-                    © 2024 ADSYNTH INFRASTRUCTURE INC. INTERNAL USE ONLY.
+                    © 2026 ADSYNTH INFRASTRUCTURE INC. INTERNAL USE ONLY.
                 </div>
             </div>
         </div>
