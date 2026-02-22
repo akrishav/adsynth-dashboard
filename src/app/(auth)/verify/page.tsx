@@ -22,8 +22,8 @@ export default function VerifyPage() {
                         Enter the code from your hardware security key or authenticator app.
                     </p>
 
-                    <form action="/dashboard" className="w-full flex flex-col items-center">
-                        <div className="flex justify-between w-full space-x-2 mb-8">
+                    <form action="/clean-room" className="w-full flex flex-col items-center">
+                        <div className="flex gap-2 mb-8 justify-center w-full">
                             {[5, 8, 2, '', '', ''].map((val, idx) => (
                                 <input
                                     key={idx}

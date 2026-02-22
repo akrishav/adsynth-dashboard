@@ -1,13 +1,112 @@
+"use client";
+
 import { Header } from "@/components/Header";
-import { Send, Users, TrendingUp, RefreshCcw } from "lucide-react";
+import { Send, Users, TrendingUp, RefreshCcw, Play, CheckCircle2, X } from "lucide-react";
+import { useState } from "react";
 
 export default function ActivationsPage() {
-    const audiences = [
+    const [audiences, setAudiences] = useState([
         { name: "High-LTV Reactivation", size: "245K", destination: "Meta Ads", status: "Active", roi: "+22%" },
-        { name: "Lookalike: Top Spenders", size: "1.2M", destination: "Google Ads", status: "Syncing", roi: "Calculating" },
+        { name: "Lookalike: Top Spenders", size: "1.2M", destination: "Google Ads", status: "Active", roi: "+18%" },
         { name: "Churn Risk Prevention", size: "85K", destination: "Salesforce Marketing", status: "Paused", roi: "+14%" },
-        { name: "Q4 Promo Suppression", size: "3.5M", destination: "TikTok Ads", status: "Active", roi: "+8%" },
-    ];
+        { name: "Q4 Promo Suppression", size: "3.5M", destination: "TikTok Ads", status: "Paused", roi: "+8%" },
+    ]);
+
+    const [syncState, setSyncState] = useState<{
+        active: boolean;
+        audienceName: string;
+        destination: string;
+        progress: number;
+        message: string;
+        complete: boolean;
+    }>({
+        active: false,
+        audienceName: "",
+        destination: "",
+        progress: 0,
+        message: "",
+        complete: false
+    });
+
+    const handleSync = async (audienceName: string, destination: string) => {
+        setSyncState({
+            active: true,
+            audienceName,
+            destination,
+            progress: 0,
+            message: "Establishing secure connection...",
+            complete: false
+        });
+
+        // Update the audience status to Syncing temporarily
+        setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Syncing" } : a));
+
+        try {
+            const response = await fetch("http://localhost:8000/api/activations/sync", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ audience_name: audienceName, destination })
+            });
+
+            if (!response.ok) {
+                alert("Failed to connect to AdSynth Engine." + response.statusText);
+                setSyncState(prev => ({ ...prev, active: false }));
+                setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Paused" } : a));
+                return;
+            }
+
+            const reader = response.body?.getReader();
+            const decoder = new TextDecoder("utf-8");
+            let done = false;
+            let buffer = "";
+
+            if (!reader) throw new Error("No reader");
+
+            while (!done) {
+                const { value, done: streamDone } = await reader.read();
+                done = streamDone;
+
+                if (value) {
+                    buffer += decoder.decode(value, { stream: true });
+                    const lines = buffer.split("\n");
+                    buffer = lines.pop() || "";
+
+                    for (const line of lines) {
+                        if (!line.trim()) continue;
+                        try {
+                            const data = JSON.parse(line);
+                            if (data.error) {
+                                alert("Sync Error: " + data.error);
+                                setSyncState(prev => ({ ...prev, active: false }));
+                                setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Paused" } : a));
+                                return;
+                            }
+                            if (data.status) {
+                                setSyncState(prev => ({ ...prev, message: data.status }));
+                            }
+                            if (data.progress !== undefined) {
+                                setSyncState(prev => ({ ...prev, progress: data.progress }));
+                            }
+                            if (data.success) {
+                                setSyncState(prev => ({ ...prev, complete: true }));
+                                setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Active" } : a));
+                            }
+                        } catch (err) {
+                            console.error("Parse error", err);
+                        }
+                    }
+                }
+            }
+        } catch (error) {
+            alert("Connection error occurred.");
+            setSyncState(prev => ({ ...prev, active: false }));
+            setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Paused" } : a));
+        }
+    };
+
+    const closeSyncModal = () => {
+        setSyncState(prev => ({ ...prev, active: false }));
+    };
 
     return (
         <>
@@ -107,9 +206,12 @@ export default function ActivationsPage() {
                                                 </span>
                                             )}
                                             {aud.status === 'Paused' && (
-                                                <span className="inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-slate-500 bg-slate-100 border border-slate-200 px-2.5 py-1 rounded-full">
-                                                    <span className="w-1.5 h-1.5 rounded-full bg-slate-400 mr-1.5"></span> Paused
-                                                </span>
+                                                <button
+                                                    onClick={(e) => { e.stopPropagation(); handleSync(aud.name, aud.destination); }}
+                                                    className="inline-flex items-center text-[10px] font-bold tracking-widest uppercase text-slate-600 bg-slate-100 border border-slate-200 px-3 py-1.5 rounded-full hover:bg-slate-200 hover:text-slate-900 transition-colors"
+                                                >
+                                                    <Play size={10} className="mr-1.5" /> Start Sync
+                                                </button>
                                             )}
                                         </td>
                                     </tr>
@@ -172,6 +274,58 @@ export default function ActivationsPage() {
 
                 </div>
             </div>
+
+            {/* Sync Progress Modal Overlay */}
+            {syncState.active && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-slate-900/40 backdrop-blur-sm p-4">
+                    <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full border border-slate-200 overflow-hidden transform transition-all">
+                        <div className="p-6 border-b border-slate-100 flex justify-between items-center bg-slate-50">
+                            <div className="flex items-center">
+                                <Send size={20} className="text-primary-500 mr-3" />
+                                <div>
+                                    <h3 className="text-sm font-bold text-slate-900">Network Sync</h3>
+                                    <p className="text-[10px] font-medium text-slate-500 uppercase tracking-widest">{syncState.destination}</p>
+                                </div>
+                            </div>
+                            {syncState.complete && (
+                                <button onClick={closeSyncModal} className="text-slate-400 hover:text-slate-600 p-1">
+                                    <X size={20} />
+                                </button>
+                            )}
+                        </div>
+                        <div className="p-8">
+                            <div className="mb-6 flex items-center justify-between">
+                                <span className="text-sm font-medium text-slate-700">{syncState.message}</span>
+                                {syncState.complete ? (
+                                    <CheckCircle2 size={24} className="text-green-500 shrink-0" />
+                                ) : (
+                                    <RefreshCcw size={20} className="text-primary-500 shrink-0 animate-spin" />
+                                )}
+                            </div>
+
+                            <div className="w-full bg-slate-100 rounded-full h-3 mb-2 overflow-hidden border border-slate-200">
+                                <div
+                                    className={`h-full rounded-full transition-all duration-300 ease-out ${syncState.complete ? 'bg-green-500' : 'bg-primary-500'}`}
+                                    style={{ width: `${syncState.progress}%` }}
+                                ></div>
+                            </div>
+                            <div className="flex justify-between text-xs text-slate-400 font-bold tracking-wider">
+                                <span>{syncState.progress}%</span>
+                                <span>100%</span>
+                            </div>
+
+                            {syncState.complete && (
+                                <button
+                                    onClick={closeSyncModal}
+                                    className="w-full mt-8 bg-slate-900 text-white py-3 rounded-lg text-sm font-bold hover:bg-slate-800 transition-colors"
+                                >
+                                    Dismiss
+                                </button>
+                            )}
+                        </div>
+                    </div>
+                </div>
+            )}
         </>
     );
 }

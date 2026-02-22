@@ -47,7 +47,7 @@ export default function LandingPage() {
               The enterprise-grade synthetic data clean room built for regulated industries. Scale your Meta and Google performance <strong className="font-semibold text-slate-900">without</strong> compromising user privacy.
             </p>
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-              <Link href="/dashboard" className="bg-slate-900 text-white px-6 py-3.5 rounded-lg font-medium hover:bg-slate-800 transition-colors flex items-center justify-center group">
+              <Link href="/clean-room" className="bg-slate-900 text-white px-6 py-3.5 rounded-lg font-medium hover:bg-slate-800 transition-colors flex items-center justify-center group">
                 Start Synthesizing
                 <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>

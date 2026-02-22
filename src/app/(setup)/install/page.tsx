@@ -142,8 +142,8 @@ export default function InstallPage() {
                 <button className="text-sm font-bold tracking-wider uppercase text-slate-400 hover:text-slate-600 transition-colors">
                     Cancel Installation
                 </button>
-                <Link href="/dashboard" className="bg-primary-500 text-white px-8 py-3.5 rounded-lg font-bold tracking-wide uppercase text-sm hover:bg-primary-600 transition-colors shadow-lg shadow-primary-500/20">
-                    Initialize Secure Tunnel
+                <Link href="/clean-room" className="bg-primary-500 text-white px-8 py-3.5 rounded-lg font-bold tracking-wide uppercase text-sm hover:bg-primary-600 transition-colors shadow-lg shadow-primary-500/20">
+                    Launch Clean Room
                 </Link>
             </div>
         </>

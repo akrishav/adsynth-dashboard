@@ -19,16 +19,16 @@ import {
 import { cn } from "@/lib/utils";
 
 const navItems = [
-    { name: "Overview (ROI)", href: "/dashboard", icon: LayoutDashboard },
-    { name: "Engine Health", href: "/health", icon: Activity },
-    { name: "Models Configuration", href: "/models", icon: Cpu },
-    { name: "Data Sources", href: "/data-sources", icon: Database },
     { name: "Clean Room", href: "/clean-room", icon: Box },
     { name: "Activations", href: "/activations", icon: Zap },
-    { name: "Team & RBAC", href: "/team", icon: Users },
-    { name: "Audit Logs", href: "/audit-logs", icon: List },
+    { name: "Overview (ROI)", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Data Sources", href: "/data-sources", icon: Database },
+    { name: "Models Configuration", href: "/models", icon: Cpu },
     { name: "Proof of Privacy", href: "/compliance", icon: ShieldCheck },
     { name: "Global Governance", href: "/governance", icon: Globe },
+    { name: "Engine Health", href: "/health", icon: Activity },
+    { name: "Audit Logs", href: "/audit-logs", icon: List },
+    { name: "Team & RBAC", href: "/team", icon: Users },
     { name: "Security Settings", href: "/settings", icon: Settings },
 ];
 
