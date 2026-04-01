@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useRef } from "react";
+import Papa from "papaparse";
 import { Header } from "@/components/Header";
 import { UploadCloud, File as FileIcon, ShieldAlert, Cpu, CheckCircle2, Send, RefreshCcw, X, ChevronDown } from "lucide-react";
 import { recordSynthesisRun } from "@/app/actions";
@@ -12,6 +13,9 @@ export default function CleanRoomPage() {
     const [statusMessage, setStatusMessage] = useState("Initializing Engine...");
     const fileInputRef = useRef<HTMLInputElement>(null);
     const [selectedDestination, setSelectedDestination] = useState<string>("Meta Ads");
+    const [previewData, setPreviewData] = useState<any[]>([]);
+    const [columns, setColumns] = useState<string[]>([]);
+    const [selectedPII, setSelectedPII] = useState<string[]>([]);
 
     const [syncState, setSyncState] = useState<{
         active: boolean;
@@ -106,11 +110,34 @@ export default function CleanRoomPage() {
         setSyncState(prev => ({ ...prev, active: false }));
     };
 
+    const togglePII = (col: string) => {
+        setSelectedPII(prev => 
+            prev.includes(col) ? prev.filter(c => c !== col) : [...prev, col]
+        );
+    };
+
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
-            setFile(e.target.files[0]);
+            const uploadedFile = e.target.files[0];
+            setFile(uploadedFile);
             setStatus("IDLE");
             setProgress(0);
+            
+            Papa.parse(uploadedFile, {
+                header: true,
+                preview: 5,
+                skipEmptyLines: true,
+                complete: (results) => {
+                    if (results.meta.fields) {
+                        setColumns(results.meta.fields);
+                        setPreviewData(results.data);
+                        const detected = results.meta.fields.filter(f => 
+                            /email|name|ssn|phone|address|ip|credit|card/i.test(f)
+                        );
+                        setSelectedPII(detected);
+                    }
+                }
+            });
         }
     };
 
@@ -140,6 +167,7 @@ export default function CleanRoomPage() {
         
         formData.append("model_type", modelType);
         formData.append("epochs", epochs.toString());
+        formData.append("pii_columns", JSON.stringify(selectedPII));
 
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
@@ -325,6 +353,53 @@ export default function CleanRoomPage() {
                                 </div>
                             </div>
                         </div>
+
+                        {previewData.length > 0 && status === "IDLE" && (
+                            <div className="bg-white border border-slate-200 rounded-2xl p-6 shadow-sm overflow-hidden">
+                                <div className="flex justify-between items-center mb-4">
+                                    <h2 className="text-lg font-bold text-slate-900">Schema Preview</h2>
+                                    <span className="text-xs font-bold bg-primary-50 text-primary-600 px-3 py-1 rounded-full uppercase tracking-wider">
+                                        {selectedPII.length} PII Columns Masked
+                                    </span>
+                                </div>
+                                <p className="text-xs text-slate-500 mb-6">Click on column headers to flag them for explicit synthetic scrubbing and masking.</p>
+                                
+                                <div className="overflow-x-auto border border-slate-200 rounded-xl max-w-full">
+                                    <table className="w-full text-left text-xs whitespace-nowrap">
+                                        <thead className="bg-slate-50 border-b border-slate-200">
+                                            <tr>
+                                                {columns.map(col => {
+                                                    const isPII = selectedPII.includes(col);
+                                                    return (
+                                                        <th 
+                                                            key={col}
+                                                            onClick={() => togglePII(col)}
+                                                            className={`p-3 font-semibold cursor-pointer select-none transition-colors border-r border-slate-100 last:border-r-0 ${isPII ? 'bg-red-50 text-red-700' : 'text-slate-700 hover:bg-slate-100'}`}
+                                                        >
+                                                            <div className="flex items-center space-x-2">
+                                                                <span>{col}</span>
+                                                                {isPII && <ShieldAlert size={14} className="text-red-500 shrink-0" />}
+                                                            </div>
+                                                        </th>
+                                                    )
+                                                })}
+                                            </tr>
+                                        </thead>
+                                        <tbody className="divide-y divide-slate-100">
+                                            {previewData.map((row, idx) => (
+                                                <tr key={idx} className="hover:bg-slate-50">
+                                                    {columns.map(col => (
+                                                        <td key={col} className={`p-3 max-w-[200px] truncate border-r border-slate-100 last:border-r-0 ${selectedPII.includes(col) ? 'text-slate-400 bg-red-50/20 italic' : 'text-slate-600'}`}>
+                                                            {selectedPII.includes(col) ? '••••••••' : String(row[col] || '')}
+                                                        </td>
+                                                    ))}
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        )}
 
                         {/* Active Processing State */}
                         {(status === "SYNTHESIZING" || status === "DONE") && (
