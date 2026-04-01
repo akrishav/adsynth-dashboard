@@ -42,7 +42,8 @@ export default function ActivationsPage() {
         setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Syncing" } : a));
 
         try {
-            const response = await fetch("http://localhost:8000/api/activations/sync", {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+            const response = await fetch(`${apiUrl}/api/activations/sync`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ audience_name: audienceName, destination })

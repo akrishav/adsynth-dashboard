@@ -39,7 +39,8 @@ export default function CleanRoomPage() {
         });
 
         try {
-            const response = await fetch("http://localhost:8000/api/activations/sync", {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+            const response = await fetch(`${apiUrl}/api/activations/sync`, {
                 method: "POST",
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ audience_name: audienceName, destination })
@@ -123,7 +124,8 @@ export default function CleanRoomPage() {
         formData.append("file", file);
 
         try {
-            const response = await fetch("http://localhost:8000/api/synthesize", {
+            const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
+            const response = await fetch(`${apiUrl}/api/synthesize`, {
                 method: "POST",
                 body: formData,
             });
