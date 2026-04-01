@@ -23,8 +23,8 @@ export default function LandingPage() {
             </div>
 
             <div className="flex items-center space-x-4 text-sm font-medium">
-              <Link href="/login" className="text-slate-600 hover:text-slate-900 transition-colors">Log In</Link>
-              <Link href="/install" className="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+              <Link href="/sign-in" className="text-slate-600 hover:text-slate-900 transition-colors">Log In</Link>
+              <Link href="/sign-up" className="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
                 Get Started
               </Link>
             </div>
@@ -201,7 +201,7 @@ export default function LandingPage() {
           Join 50+ enterprise teams using AdSynth to drive ad performance in a post-cookie world.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-          <Link href="/install" className="bg-primary-500 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-primary-600 transition-colors w-full sm:w-auto text-center shadow-lg shadow-primary-500/30">
+          <Link href="/sign-up" className="bg-primary-500 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-primary-600 transition-colors w-full sm:w-auto text-center shadow-lg shadow-primary-500/30">
             Start Your Free Trial
           </Link>
           <button className="bg-white border text-center border-slate-200 text-slate-700 px-8 py-3.5 rounded-lg font-semibold hover:bg-slate-50 transition-colors w-full sm:w-auto">

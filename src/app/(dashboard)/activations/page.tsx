@@ -3,6 +3,7 @@
 import { Header } from "@/components/Header";
 import { Send, Users, TrendingUp, RefreshCcw, Play, CheckCircle2, X } from "lucide-react";
 import { useState } from "react";
+import { recordActivation } from "@/app/actions";
 
 export default function ActivationsPage() {
     const [audiences, setAudiences] = useState([
@@ -45,7 +46,10 @@ export default function ActivationsPage() {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
             const response = await fetch(`${apiUrl}/api/activations/sync`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { 
+                    "Content-Type": "application/json",
+                    "X-API-KEY": process.env.NEXT_PUBLIC_API_KEY || ""
+                },
                 body: JSON.stringify({ audience_name: audienceName, destination })
             });
 

@@ -1,0 +1,27 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model SynthesisRun {
+  id           String   @id @default(cuid())
+  fileName     String
+  rows         Int      @default(0)
+  qualityScore Float
+  privacyScore Float
+  createdAt    DateTime @default(now())
+}
+
+model Activation {
+  id           String   @id @default(cuid())
+  audienceName String
+  destination  String
+  size         Int      @default(0)
+  status       String
+  roi          Float    @default(0)
+  createdAt    DateTime @default(now())
+}

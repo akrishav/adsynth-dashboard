@@ -3,6 +3,7 @@
 import { useState, useRef } from "react";
 import { Header } from "@/components/Header";
 import { UploadCloud, File as FileIcon, ShieldAlert, Cpu, CheckCircle2, Send, RefreshCcw, X, ChevronDown } from "lucide-react";
+import { recordSynthesisRun } from "@/app/actions";
 
 export default function CleanRoomPage() {
     const [file, setFile] = useState<File | null>(null);
@@ -42,7 +43,10 @@ export default function CleanRoomPage() {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
             const response = await fetch(`${apiUrl}/api/activations/sync`, {
                 method: "POST",
-                headers: { "Content-Type": "application/json" },
+                headers: { 
+                    "Content-Type": "application/json",
+                    "X-API-KEY": process.env.NEXT_PUBLIC_API_KEY || ""
+                },
                 body: JSON.stringify({ audience_name: audienceName, destination })
             });
 
@@ -122,11 +126,28 @@ export default function CleanRoomPage() {
 
         const formData = new FormData();
         formData.append("file", file);
+        
+        const configStr = localStorage.getItem("adsynth_modelConfig");
+        let modelType = "gaussian";
+        let epochs = 10;
+        if (configStr) {
+            try {
+                const parsed = JSON.parse(configStr);
+                modelType = parsed.modelType || "gaussian";
+                epochs = parsed.epochs || 10;
+            } catch(e) {}
+        }
+        
+        formData.append("model_type", modelType);
+        formData.append("epochs", epochs.toString());
 
         try {
             const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
             const response = await fetch(`${apiUrl}/api/synthesize`, {
                 method: "POST",
+                headers: {
+                    "X-API-KEY": process.env.NEXT_PUBLIC_API_KEY || ""
+                },
                 body: formData,
             });
 
@@ -175,6 +196,15 @@ export default function CleanRoomPage() {
                                 setProgress(data.progress);
                             }
                             if (data.csv_data) {
+                                // Save privacy metrics for the compliance page
+                                if (data.metrics) {
+                                  localStorage.setItem("adsynth_latest_report", JSON.stringify({
+                                     fileName: file.name,
+                                     timestamp: new Date().toISOString(),
+                                     metrics: data.metrics
+                                  }));
+                                }
+
                                 // Final payload received, trigger download
                                 const blob = new Blob([data.csv_data], { type: "text/csv" });
                                 const url = window.URL.createObjectURL(blob);
@@ -185,6 +215,13 @@ export default function CleanRoomPage() {
                                 a.click();
                                 a.remove();
                                 window.URL.revokeObjectURL(url);
+
+                                // Track the run
+                                const rowsCount = data.csv_data.split('\n').length - 1;
+                                if (data.metrics) {
+                                    recordSynthesisRun(file.name, rowsCount, data.metrics.quality_score, data.metrics.privacy_score);
+                                }
+
                                 setStatus("DONE");
                             }
                         } catch (err) {

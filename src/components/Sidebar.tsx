@@ -1,5 +1,7 @@
 "use client";
 
+import { UserButton } from "@clerk/nextjs";
+
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
@@ -67,9 +69,7 @@ export function Sidebar() {
 
             <div className="p-4 border-t border-slate-100">
                 <div className="flex items-center space-x-3 px-2 py-2">
-                    <div className="w-10 h-10 rounded-full bg-slate-200 flex items-center justify-center overflow-hidden">
-                        <UserIcon />
-                    </div>
+                    <UserButton />
                     <div>
                         <div className="text-sm font-semibold text-slate-900">Admin Terminal</div>
                         <div className="text-xs text-slate-500">SaaS Enterprise Plan</div>
@@ -77,15 +77,5 @@ export function Sidebar() {
                 </div>
             </div>
         </div>
-    );
-}
-
-function UserIcon() {
-    return (
-        <svg viewBox="0 0 36 36" fill="none" className="w-10 h-10" xmlns="http://www.w3.org/2000/svg">
-            <rect width="36" height="36" fill="#E2E8F0" />
-            <circle cx="18" cy="14" r="6" fill="#94A3B8" />
-            <path d="M7 32C7 26.4772 11.4772 22 17 22H19C24.5228 22 29 26.4772 29 32V36H7V32Z" fill="#94A3B8" />
-        </svg>
     );
 }
