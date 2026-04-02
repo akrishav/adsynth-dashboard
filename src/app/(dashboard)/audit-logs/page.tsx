@@ -2,6 +2,8 @@ import { Header } from "@/components/Header";
 import { List, Download, Activity, Database, CheckCircle2, Search } from "lucide-react";
 import { getAuditLogs } from "@/app/actions";
 
+export const dynamic = "force-dynamic";
+
 export default async function AuditLogsPage() {
     const logs = await getAuditLogs();
 

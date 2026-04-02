@@ -2,6 +2,8 @@ import { Header } from "@/components/Header";
 import { Download, Calculator, TrendingUp, Users, Database as DatabaseIcon, Zap } from "lucide-react";
 import { getDashboardStats } from "@/app/actions";
 
+export const dynamic = "force-dynamic";
+
 export default async function MarketingROIPage() {
     const stats = await getDashboardStats();
 
