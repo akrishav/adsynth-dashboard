@@ -119,6 +119,13 @@ export default function CleanRoomPage() {
     const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         if (e.target.files && e.target.files.length > 0) {
             const uploadedFile = e.target.files[0];
+            
+            if (!uploadedFile.name.toLowerCase().endsWith('.csv')) {
+                alert("AdSynth Engine strictly requires .csv formatted files!\nPlease export your Excel sheet as a CSV document before uploading to the Clean Room.");
+                if (fileInputRef.current) fileInputRef.current.value = "";
+                return;
+            }
+
             setFile(uploadedFile);
             setStatus("IDLE");
             setProgress(0);
