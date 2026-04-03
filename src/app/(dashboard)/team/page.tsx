@@ -1,3 +1,5 @@
+"use client";
+
 import { Header } from "@/components/Header";
 import { FeedbackButton } from "@/components/BlobButtons";
 import { Search, Plus, ShieldCheck, User, X, CheckCircle2, AlertTriangle, Info } from "lucide-react";
