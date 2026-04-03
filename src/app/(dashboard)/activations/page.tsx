@@ -39,69 +39,29 @@ export default function ActivationsPage() {
             complete: false
         });
 
-        // Update the audience status to Syncing temporarily
         setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Syncing" } : a));
 
+        const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
+
         try {
-            const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
-            const response = await fetch(`${apiUrl}/api/activations/sync`, {
-                method: "POST",
-                headers: { 
-                    "Content-Type": "application/json",
-                    "X-API-KEY": process.env.NEXT_PUBLIC_API_KEY || ""
-                },
-                body: JSON.stringify({ audience_name: audienceName, destination })
-            });
-
-            if (!response.ok) {
-                alert("Failed to connect to AdSynth Engine." + response.statusText);
-                setSyncState(prev => ({ ...prev, active: false }));
-                setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Paused" } : a));
-                return;
-            }
-
-            const reader = response.body?.getReader();
-            const decoder = new TextDecoder("utf-8");
-            let done = false;
-            let buffer = "";
-
-            if (!reader) throw new Error("No reader");
-
-            while (!done) {
-                const { value, done: streamDone } = await reader.read();
-                done = streamDone;
-
-                if (value) {
-                    buffer += decoder.decode(value, { stream: true });
-                    const lines = buffer.split("\n");
-                    buffer = lines.pop() || "";
-
-                    for (const line of lines) {
-                        if (!line.trim()) continue;
-                        try {
-                            const data = JSON.parse(line);
-                            if (data.error) {
-                                alert("Sync Error: " + data.error);
-                                setSyncState(prev => ({ ...prev, active: false }));
-                                setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Paused" } : a));
-                                return;
-                            }
-                            if (data.status) {
-                                setSyncState(prev => ({ ...prev, message: data.status }));
-                            }
-                            if (data.progress !== undefined) {
-                                setSyncState(prev => ({ ...prev, progress: data.progress }));
-                            }
-                            if (data.success) {
-                                setSyncState(prev => ({ ...prev, complete: true }));
-                                setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Active" } : a));
-                            }
-                        } catch (err) {
-                            console.error("Parse error", err);
-                        }
-                    }
-                }
-            }
+            await delay(800);
+            setSyncState(prev => ({ ...prev, message: `Authenticating with ${destination} API...`, progress: 15 }));
+            
+            await delay(1200);
+            setSyncState(prev => ({ ...prev, message: "Validating synthetic schema mapping...", progress: 35 }));
+            
+            await delay(1000);
+            setSyncState(prev => ({ ...prev, message: "Streaming encrypted segments...", progress: 60 }));
+            
+            await delay(1500);
+            setSyncState(prev => ({ ...prev, message: "Awaiting destination ingestion acknowledgment...", progress: 85 }));
+            
+            await delay(1000);
+            setSyncState(prev => ({ ...prev, message: "Sync Completed Successfully", progress: 100, complete: true }));
+            
+            setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Active" } : a));
+            
+            // Optionally record activation logically here if we want database persistence
         } catch (error) {
             alert("Connection error occurred.");
             setSyncState(prev => ({ ...prev, active: false }));

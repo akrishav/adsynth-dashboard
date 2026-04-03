@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { CSVExportButton } from "@/components/BlobButtons";
 import { List, Download, Activity, Database, CheckCircle2, Search } from "lucide-react";
 import { getAuditLogs } from "@/app/actions";
 
@@ -13,9 +14,7 @@ export default async function AuditLogsPage() {
                 title="Global Audit Logs" 
                 breadcrumbs={[{ label: "Governance" }, { label: "Audit Logs" }]}
                 action={
-                    <button className="bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase hover:bg-slate-50 transition-colors flex items-center shadow-sm">
-                        <Download size={14} className="mr-2" /> Export CSV Let
-                    </button>
+                    <CSVExportButton logs={logs} />
                 }
             />
             

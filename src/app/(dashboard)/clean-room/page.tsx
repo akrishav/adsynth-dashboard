@@ -1,9 +1,9 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useCallback } from "react";
 import Papa from "papaparse";
 import { Header } from "@/components/Header";
-import { UploadCloud, File as FileIcon, ShieldAlert, Cpu, CheckCircle2, Send, RefreshCcw, X, ChevronDown } from "lucide-react";
+import { UploadCloud, File as FileIcon, ShieldAlert, Cpu, CheckCircle2, Send, RefreshCcw, X, ChevronDown, Save } from "lucide-react";
 import { recordSynthesisRun } from "@/app/actions";
 
 export default function CleanRoomPage() {
@@ -16,6 +16,7 @@ export default function CleanRoomPage() {
     const [previewData, setPreviewData] = useState<any[]>([]);
     const [columns, setColumns] = useState<string[]>([]);
     const [selectedPII, setSelectedPII] = useState<string[]>([]);
+    const [templateSaved, setTemplateSaved] = useState(false);
 
     const [syncState, setSyncState] = useState<{
         active: boolean;
@@ -282,8 +283,17 @@ export default function CleanRoomPage() {
             <Header
                 title="Clean Room Workspace"
                 action={
-                    <button className="bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase hover:bg-slate-50 transition-colors">
-                        Save Template
+                    <button
+                        onClick={() => {
+                            const template = { selectedDestination, selectedPII, savedAt: new Date().toISOString() };
+                            localStorage.setItem("adsynth_template", JSON.stringify(template));
+                            setTemplateSaved(true);
+                            setTimeout(() => setTemplateSaved(false), 2500);
+                        }}
+                        className={`px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase transition-all duration-300 flex items-center ${templateSaved ? "bg-green-500 text-white" : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50"}`}
+                    >
+                        <Save size={14} className="mr-2" />
+                        {templateSaved ? "✓ Template Saved!" : "Save Template"}
                     </button>
                 }
             />

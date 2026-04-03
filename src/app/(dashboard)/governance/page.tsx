@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { ExecSummaryDownload } from "@/components/BlobButtons";
 import { Download, ShieldCheck, Globe, Database, ShieldAlert } from "lucide-react";
 
 export default function GovernancePage() {
@@ -13,11 +14,7 @@ export default function GovernancePage() {
             <Header
                 title="Global Privacy Governance"
                 breadcrumbs={[]}
-                action={
-                    <button className="bg-slate-900 text-white px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase flex items-center hover:bg-slate-800 transition-colors shadow-md shadow-slate-900/20">
-                        <Download size={14} className="mr-2" /> Generate Board Report
-                    </button>
-                }
+                action={<ExecSummaryDownload stats={{totalProfiles: "4.2B", activeDestinations: 14, avgRoi: 0, runs: [{fileName: "GLOBAL_PCI_DATA.csv", rows: 14204, qualityScore: 99}]}} />}
             />
 
             <div className="flex-1 overflow-y-auto p-8 max-w-7xl mx-auto w-full">

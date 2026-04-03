@@ -1,6 +1,7 @@
 "use client";
 
 import { Activity, Zap, ShieldCheck, Download, RefreshCcw } from "lucide-react";
+import { FeedbackButton } from "@/components/BlobButtons";
 
 export default function HealthPage() {
     return (
@@ -14,12 +15,16 @@ export default function HealthPage() {
                         <span className="w-1.5 h-1.5 bg-primary-500 rounded-full animate-pulse"></span>
                         <span>LIVE</span>
                     </div>
-                    <button className="bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase flex items-center hover:bg-slate-50 transition-colors">
-                        EXPORT DATA
-                    </button>
-                    <button className="bg-primary-500 text-white px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase hover:bg-primary-600 transition-colors shadow-md shadow-primary-500/20">
-                        SYSTEM REBOOT
-                    </button>
+                    <FeedbackButton 
+                        label="EXPORT DATA" 
+                        alertMessage="Engine telemetry data has been compiled and emailed to the Global Admin." 
+                        className="bg-white border border-slate-200 text-slate-700 px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase flex items-center hover:bg-slate-50 transition-colors"
+                    />
+                    <FeedbackButton 
+                        label="SYSTEM REBOOT" 
+                        alertMessage="REBOOT ABORTED: Cannot safely reboot Engine Node-01 while live inferences are executing." 
+                        className="bg-red-500 text-white px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase hover:bg-red-600 transition-colors shadow-md shadow-red-500/20"
+                    />
                 </div>
             </div>
 

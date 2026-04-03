@@ -1,4 +1,5 @@
 import { Header } from "@/components/Header";
+import { ExecSummaryDownload } from "@/components/BlobButtons";
 import { Download, Calculator, TrendingUp, Users, Database as DatabaseIcon, Zap } from "lucide-react";
 import { getDashboardStats } from "@/app/actions";
 
@@ -13,9 +14,7 @@ export default async function MarketingROIPage() {
                 title="Performance & ROAS Recovery"
                 breadcrumbs={[{ label: "Overview", href: "/dashboard" }, { label: "Marketing ROI" }]}
                 action={
-                    <button className="bg-primary-500 text-white px-4 py-2 rounded-lg text-xs font-bold tracking-wider uppercase hover:bg-primary-600 transition-colors shadow-md shadow-primary-500/20 flex items-center">
-                        <Download size={14} className="mr-2" /> Download Executive Summary
-                    </button>
+                    <ExecSummaryDownload stats={stats} />
                 }
             />
 

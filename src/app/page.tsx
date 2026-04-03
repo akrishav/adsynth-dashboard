@@ -16,10 +16,10 @@ export default function LandingPage() {
             </div>
 
             <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-              <Link href="#" className="hover:text-slate-900 transition-colors">Platform</Link>
-              <Link href="#" className="hover:text-slate-900 transition-colors">Solutions</Link>
-              <Link href="#" className="hover:text-slate-900 transition-colors">Science</Link>
-              <Link href="#" className="hover:text-slate-900 transition-colors">Pricing</Link>
+              <Link href="#platform" className="hover:text-slate-900 transition-colors">Platform</Link>
+              <Link href="#solutions" className="hover:text-slate-900 transition-colors">Solutions</Link>
+              <Link href="#science" className="hover:text-slate-900 transition-colors">Science</Link>
+              <Link href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</Link>
             </div>
 
             <div className="flex items-center space-x-4 text-sm font-medium">
@@ -113,8 +113,8 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* Built for Performance Engineering */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+      {/* Built for Performance Engineering (Platform) */}
+      <div id="platform" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-3xl font-bold text-slate-900 mb-4">Built for Performance Engineering</h2>
           <p className="text-slate-600">Automate the generation of high-fidelity synthetic data without writing a single line of privacy logic.</p>
@@ -138,8 +138,8 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* The Math Behind the Clean Room */}
-      <div className="bg-slate-900 text-white py-24">
+      {/* The Math Behind the Clean Room (Science) */}
+      <div id="science" className="bg-slate-900 text-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 gap-16 items-center bg-slate-800/50 rounded-3xl p-8 lg:p-12 border border-slate-700/50">
             <div>
@@ -194,9 +194,9 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* CTA Section */}
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-        <h2 className="text-4xl font-bold text-slate-900 mb-6">Ready to reclaim your ROAS?</h2>
+      {/* CTA Section (Pricing/Solutions Hook) */}
+      <div id="solutions" className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
+        <h2 id="pricing" className="text-4xl font-bold text-slate-900 mb-6">Ready to reclaim your ROAS?</h2>
         <p className="text-lg text-slate-600 mb-10">
           Join 50+ enterprise teams using AdSynth to drive ad performance in a post-cookie world.
         </p>
@@ -232,30 +232,30 @@ export default function LandingPage() {
             <div>
               <h4 className="font-bold text-slate-900 mb-4 text-sm">Product</h4>
               <ul className="space-y-3 text-sm text-slate-500">
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">GAN Engine</li>
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">Clean Room</li>
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">Integrations</li>
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">Security</li>
+                <li><a href="#platform" className="hover:text-slate-900 transition-colors cursor-pointer">GAN Engine</a></li>
+                <li><a href="/clean-room" className="hover:text-slate-900 transition-colors cursor-pointer">Clean Room</a></li>
+                <li><a href="#platform" className="hover:text-slate-900 transition-colors cursor-pointer">Integrations</a></li>
+                <li><a href="#science" className="hover:text-slate-900 transition-colors cursor-pointer">Security</a></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-bold text-slate-900 mb-4 text-sm">Resources</h4>
               <ul className="space-y-3 text-sm text-slate-500">
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">Documentation</li>
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">API Reference</li>
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">Privacy Guide</li>
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">Case Studies</li>
+                <li><a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-slate-900 transition-colors cursor-pointer">Documentation</a></li>
+                <li><a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-slate-900 transition-colors cursor-pointer">API Reference</a></li>
+                <li><a href="#science" className="hover:text-slate-900 transition-colors cursor-pointer">Privacy Guide</a></li>
+                <li><a href="#platform" className="hover:text-slate-900 transition-colors cursor-pointer">Case Studies</a></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-bold text-slate-900 mb-4 text-sm">Company</h4>
               <ul className="space-y-3 text-sm text-slate-500">
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">About Us</li>
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">Careers</li>
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">Privacy Policy</li>
-                <li className="hover:text-slate-900 cursor-pointer transition-colors">Terms of Service</li>
+                <li><a href="#solutions" className="hover:text-slate-900 transition-colors cursor-pointer">About Us</a></li>
+                <li><a href="/sign-up" className="hover:text-slate-900 transition-colors cursor-pointer">Careers</a></li>
+                <li><a href="#solutions" className="hover:text-slate-900 transition-colors cursor-pointer">Privacy Policy</a></li>
+                <li><a href="#solutions" className="hover:text-slate-900 transition-colors cursor-pointer">Terms of Service</a></li>
               </ul>
             </div>
           </div>

@@ -2,27 +2,40 @@
 
 import { useState } from "react";
 import { Header } from "@/components/Header";
-import { Database, Link2, CheckCircle2, AlertTriangle, ShieldCheck } from "lucide-react";
+import { Database, Link2, CheckCircle2, ShieldCheck, Lock, Cloud, Server, Hexagon } from "lucide-react";
 import { recordSynthesisRun } from "@/app/actions";
 
 export default function DataSourcesPage() {
+    const [selectedIntegration, setSelectedIntegration] = useState<string>("PostgreSQL");
     const [connString, setConnString] = useState("postgresql://default:user@ep-fancy-snowflake-1234.us-east-1.aws.neon.tech/neondb");
     const [tableName, setTableName] = useState("users");
     const [status, setStatus] = useState("IDLE"); // IDLE, CONNECTING, SYNTHESIZING, DONE
     const [progress, setProgress] = useState(0);
     const [logs, setLogs] = useState<string[]>([]);
     
+    const renderIcon = (name: string) => {
+        switch(name) {
+            case 'PostgreSQL': return <Database size={24} />;
+            case 'Snowflake': return <Hexagon size={24} />;
+            case 'AWS RDS': return <Server size={24} />;
+            case 'Google BigQuery': return <Cloud size={24} />;
+            default: return <Database size={24} />;
+        }
+    }
+
+    const integrations = [
+        { name: "PostgreSQL", desc: "Native Secure SQL Engine", active: true, color: "text-indigo-600 bg-indigo-50 border-indigo-200" },
+        { name: "Snowflake", desc: "Data Cloud Warehouse", active: false, color: "text-blue-500 bg-blue-50 border-blue-200" },
+        { name: "AWS RDS", desc: "Amazon Relational DB", active: false, color: "text-orange-500 bg-orange-50 border-orange-200" },
+        { name: "Google BigQuery", desc: "Enterprise Data Warehouse", active: false, color: "text-emerald-600 bg-emerald-50 border-emerald-200" },
+    ];
+
     const handleConnectAndSynthesize = async () => {
         setStatus("CONNECTING");
         setLogs(["Initiating secure database handshake..."]);
         setProgress(10);
         
         try {
-            const formData = new FormData();
-            formData.append("connection_string", connString);
-            formData.append("tableName", tableName);
-            
-            // Just mapped form data to snake_case logic
             const bodyData = new FormData();
             bodyData.append("connection_string", connString);
             bodyData.append("table_name", tableName);
@@ -37,6 +50,10 @@ export default function DataSourcesPage() {
                 },
                 body: bodyData,
             });
+
+            if (!response.ok) {
+                throw new Error("Failed to authenticate or connect securely.");
+            }
 
             if (!response.body) throw new Error("No response body");
 
@@ -56,17 +73,9 @@ export default function DataSourcesPage() {
                         try {
                             const data = JSON.parse(ev.replace('data: ', ''));
 
-                            if (data.error) {
-                                throw new Error(data.error);
-                            }
-
-                            if (data.status) {
-                                setLogs(prev => [...prev, data.status]);
-                            }
-                            
-                            if (data.progress) {
-                                setProgress(data.progress);
-                            }
+                            if (data.error) throw new Error(data.error);
+                            if (data.status) setLogs(prev => [...prev, data.status]);
+                            if (data.progress) setProgress(data.progress);
 
                             if (data.csv_data) {
                                 if (data.metrics) {
@@ -103,7 +112,7 @@ export default function DataSourcesPage() {
         } catch (error) {
             console.error(error);
             setStatus("IDLE");
-            alert("Failed to connect or synthesize database: " + error);
+            alert("Connection error: " + error);
         }
     };
 
@@ -111,81 +120,125 @@ export default function DataSourcesPage() {
         <>
             <Header title="Data Sources" breadcrumbs={[{ label: "Governance" }, { label: "Data Sources"}]} />
             
-            <div className="flex-1 overflow-y-auto p-8 max-w-4xl mx-auto w-full">
+            <div className="flex-1 overflow-y-auto p-8 max-w-5xl mx-auto w-full">
                 <h1 className="text-2xl font-bold text-slate-900 mb-2">Remote Integrations</h1>
-                <p className="text-sm text-slate-500 mb-8 max-w-2xl leading-relaxed">
+                <p className="text-sm text-slate-500 mb-10 max-w-2xl leading-relaxed">
                     Connect directly to your data warehouses to ingest and synthesize records without manual file uploads. Your credentials are never stored.
                 </p>
 
-                <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden mb-8">
-                    <div className="p-6 border-b border-slate-100 flex items-center bg-slate-50">
-                        <div className="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mr-4">
-                            <Database size={20} />
+                {/* Integrations Grid */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                    {integrations.map((integration) => (
+                        <div 
+                            key={integration.name}
+                            onClick={() => setSelectedIntegration(integration.name)}
+                            className={`relative overflow-hidden rounded-2xl border-2 transition-all cursor-pointer ${
+                                selectedIntegration === integration.name 
+                                ? 'border-primary-500 shadow-md transform -translate-y-1' 
+                                : 'border-slate-200 hover:border-slate-300 bg-white'
+                            }`}
+                        >
+                            <div className="p-6">
+                                <div className="flex justify-between items-start mb-4">
+                                    <div className={`w-12 h-12 rounded-xl flex items-center justify-center border ${integration.color}`}>
+                                        {renderIcon(integration.name)}
+                                    </div>
+                                    {!integration.active && (
+                                        <div className="bg-slate-100 text-slate-400 p-1.5 rounded-md">
+                                            <Lock size={14} />
+                                        </div>
+                                    )}
+                                </div>
+                                <h3 className="text-sm font-bold text-slate-900 mb-1">{integration.name}</h3>
+                                <p className="text-xs text-slate-500">{integration.desc}</p>
+                            </div>
                         </div>
-                        <div>
-                            <h2 className="text-lg font-bold text-slate-900">PostgreSQL Connection</h2>
-                            <p className="text-xs text-slate-500">e.g., Supabase, Neon, AWS RDS</p>
+                    ))}
+                </div>
+
+                {/* Connection Form View */}
+                {selectedIntegration === "PostgreSQL" ? (
+                    <div className="bg-white border border-slate-200 rounded-2xl shadow-sm overflow-hidden mb-8 animate-in fade-in slide-in-from-bottom-4 duration-500">
+                        <div className="p-6 border-b border-slate-100 flex items-center bg-slate-50">
+                            <div className="w-10 h-10 bg-indigo-100 text-indigo-600 rounded-lg flex items-center justify-center mr-4">
+                                <Database size={20} />
+                            </div>
+                            <div>
+                                <h2 className="text-lg font-bold text-slate-900">PostgreSQL Connection</h2>
+                                <p className="text-xs text-slate-500">e.g., Supabase, Neon, AWS RDS</p>
+                            </div>
                         </div>
-                    </div>
-                    
-                    <div className="p-8 space-y-6">
-                        <div>
-                            <label className="block text-xs font-bold tracking-widest uppercase text-slate-500 mb-2">Connection String (URI)</label>
-                            <div className="relative">
-                                <Link2 className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                        
+                        <div className="p-8 space-y-6">
+                            <div>
+                                <label className="block text-xs font-bold tracking-widest uppercase text-slate-500 mb-2">Connection String (URI)</label>
+                                <div className="relative">
+                                    <Link2 className="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400" size={16} />
+                                    <input 
+                                        type="text" 
+                                        value={connString}
+                                        onChange={(e) => setConnString(e.target.value)}
+                                        placeholder="postgresql://user:password@host:port/database"
+                                        className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                        disabled={status !== "IDLE"}
+                                    />
+                                </div>
+                            </div>
+
+                            <div>
+                                <label className="block text-xs font-bold tracking-widest uppercase text-slate-500 mb-2">Target Table Name</label>
                                 <input 
                                     type="text" 
-                                    value={connString}
-                                    onChange={(e) => setConnString(e.target.value)}
-                                    placeholder="postgresql://user:password@host:port/database"
-                                    className="w-full pl-10 pr-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary-500"
+                                    value={tableName}
+                                    onChange={(e) => setTableName(e.target.value)}
+                                    placeholder="e.g. users, transactions"
+                                    className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary-500"
                                     disabled={status !== "IDLE"}
                                 />
                             </div>
-                        </div>
 
-                        <div>
-                            <label className="block text-xs font-bold tracking-widest uppercase text-slate-500 mb-2">Target Table Name</label>
-                            <input 
-                                type="text" 
-                                value={tableName}
-                                onChange={(e) => setTableName(e.target.value)}
-                                placeholder="e.g. users, transactions"
-                                className="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl text-sm font-mono focus:outline-none focus:ring-2 focus:ring-primary-500"
-                                disabled={status !== "IDLE"}
-                            />
+                            {status === "IDLE" ? (
+                                <button 
+                                    onClick={handleConnectAndSynthesize}
+                                    className="w-full bg-slate-900 text-white font-bold tracking-wider text-xs uppercase py-4 rounded-xl hover:bg-slate-800 transition-colors shadow-lg"
+                                >
+                                    Connect & Synthesize Table
+                                </button>
+                            ) : (
+                                <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
+                                    <div className="flex items-center justify-between mb-4">
+                                        <h3 className="text-sm font-bold text-slate-900 flex items-center">
+                                            {status === "DONE" ? <CheckCircle2 size={16} className="text-green-500 mr-2" /> : <div className="w-4 h-4 border-2 border-primary-500 border-t-transparent rounded-full animate-spin mr-2"></div>}
+                                            {status === "DONE" ? "Completed" : "Active Pipeline"}
+                                        </h3>
+                                        <span className="text-xs font-bold text-primary-500">{progress}%</span>
+                                    </div>
+                                    <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden mb-4">
+                                        <div className="h-full bg-primary-500 transition-all duration-300" style={{ width: `${progress}%` }}></div>
+                                    </div>
+                                    <div className="h-24 overflow-y-auto w-full bg-slate-900 text-slate-300 font-mono text-[10px] p-3 rounded-lg border border-slate-800 flex flex-col space-y-1 mt-4">
+                                        {logs.map((log, i) => (
+                                            <div key={i} className="flex"><span className="text-slate-500 mr-2">[{new Date().toLocaleTimeString()}]</span> {log}</div>
+                                        ))}
+                                    </div>
+                                </div>
+                            )}
                         </div>
-
-                        {status === "IDLE" ? (
-                            <button 
-                                onClick={handleConnectAndSynthesize}
-                                className="w-full bg-slate-900 text-white font-bold tracking-wider text-xs uppercase py-4 rounded-xl hover:bg-slate-800 transition-colors shadow-lg"
-                            >
-                                Connect & Synthesize Table
-                            </button>
-                        ) : (
-                            <div className="bg-slate-50 border border-slate-200 rounded-xl p-6">
-                                <div className="flex items-center justify-between mb-4">
-                                    <h3 className="text-sm font-bold text-slate-900 flex items-center">
-                                        {status === "DONE" ? <CheckCircle2 size={16} className="text-green-500 mr-2" /> : <div className="w-4 h-4 border-2 border-primary-500 border-t-transparent rounded-full animate-spin mr-2"></div>}
-                                        {status === "DONE" ? "Completed" : "Active Pipeline"}
-                                    </h3>
-                                    <span className="text-xs font-bold text-primary-500">{progress}%</span>
-                                </div>
-                                <div className="w-full h-2 bg-slate-200 rounded-full overflow-hidden mb-4">
-                                    <div className="h-full bg-primary-500 transition-all duration-300" style={{ width: `${progress}%` }}></div>
-                                </div>
-                                <div className="h-24 overflow-y-auto w-full bg-slate-900 text-slate-300 font-mono text-[10px] p-3 rounded-lg border border-slate-800 flex flex-col space-y-1 mt-4">
-                                    {logs.map((log, i) => (
-                                        <div key={i} className="flex"><span className="text-slate-500 mr-2">[{new Date().toLocaleTimeString()}]</span> {log}</div>
-                                    ))}
-                                </div>
-                            </div>
-                        )}
                     </div>
-                </div>
+                ) : (
+                    <div className="bg-slate-50 border border-slate-200 rounded-2xl flex flex-col items-center justify-center p-12 text-center animate-in fade-in slide-in-from-bottom-4 duration-500">
+                        <Lock size={32} className="text-slate-400 mb-4" />
+                        <h2 className="text-lg font-bold text-slate-900 mb-2">Enterprise Tier Required</h2>
+                        <p className="text-sm text-slate-500 max-w-sm mb-6">
+                            Native integration for {selectedIntegration} requires connecting through a managed VPN tunnel currently available exclusively on the Enterprise AdSynth Tier.
+                        </p>
+                        <button className="bg-white border border-slate-200 text-slate-900 px-6 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase hover:bg-slate-50 transition-colors shadow-sm">
+                            Upgrade Plan
+                        </button>
+                    </div>
+                )}
 
-                <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start">
+                <div className="p-4 bg-amber-50 border border-amber-200 rounded-xl flex items-start mt-8">
                     <ShieldCheck className="text-amber-600 mr-3 shrink-0" size={20} />
                     <div>
                         <h4 className="text-sm font-bold text-amber-900">Zero Trust Architecture</h4>
