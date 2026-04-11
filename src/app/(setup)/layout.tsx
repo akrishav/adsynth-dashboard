@@ -12,7 +12,7 @@ export default function SetupLayout({
                     <div className="w-6 h-6 bg-primary-500 rounded flex items-center justify-center text-white">
                         <Zap size={14} fill="currentColor" />
                     </div>
-                    <span className="font-bold text-slate-900 tracking-tight">ADSYNTH <span className="text-slate-400 font-medium ml-1">INSTALLATION</span></span>
+                    <span className="font-bold text-slate-900 tracking-tight">FAKTOROS <span className="text-slate-400 font-medium ml-1">INSTALLATION</span></span>
                 </div>
 
                 <div className="flex items-center space-x-6 text-xs font-bold tracking-wider uppercase">

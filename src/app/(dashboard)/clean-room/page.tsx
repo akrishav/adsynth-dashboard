@@ -56,7 +56,7 @@ export default function CleanRoomPage() {
             });
 
             if (!response.ok) {
-                alert("Failed to connect to AdSynth Engine." + response.statusText);
+                alert("Failed to connect to FaktorOS Engine." + response.statusText);
                 setSyncState(prev => ({ ...prev, active: false }));
                 return;
             }
@@ -122,7 +122,7 @@ export default function CleanRoomPage() {
             const uploadedFile = e.target.files[0];
             
             if (!uploadedFile.name.toLowerCase().endsWith('.csv')) {
-                alert("AdSynth Engine strictly requires .csv formatted files!\nPlease export your Excel sheet as a CSV document before uploading to the Clean Room.");
+                alert("FaktorOS Engine strictly requires .csv formatted files!\nPlease export your Excel sheet as a CSV document before uploading to the Clean Room.");
                 if (fileInputRef.current) fileInputRef.current.value = "";
                 return;
             }
@@ -162,7 +162,7 @@ export default function CleanRoomPage() {
         const formData = new FormData();
         formData.append("file", file);
         
-        const configStr = localStorage.getItem("adsynth_modelConfig");
+        const configStr = localStorage.getItem("faktoros_modelConfig");
         let modelType = "gaussian";
         let epochs = 10;
         if (configStr) {
@@ -234,7 +234,7 @@ export default function CleanRoomPage() {
                             if (data.csv_data) {
                                 // Save privacy metrics for the compliance page
                                 if (data.metrics) {
-                                  localStorage.setItem("adsynth_latest_report", JSON.stringify({
+                                  localStorage.setItem("faktoros_latest_report", JSON.stringify({
                                      fileName: file.name,
                                      timestamp: new Date().toISOString(),
                                      metrics: data.metrics
@@ -246,7 +246,7 @@ export default function CleanRoomPage() {
                                 const url = window.URL.createObjectURL(blob);
                                 const a = document.createElement("a");
                                 a.href = url;
-                                a.download = `adsynth_clean_${file.name}`;
+                                a.download = `faktoros_clean_${file.name}`;
                                 document.body.appendChild(a);
                                 a.click();
                                 a.remove();
@@ -267,7 +267,7 @@ export default function CleanRoomPage() {
                 }
             }
         } catch (error) {
-            alert("Connection to AdSynth engine failed. Ensure the Python FastAPI backend is running on port 8000.");
+            alert("Connection to FaktorOS engine failed. Ensure the Python FastAPI backend is running on port 8000.");
             setStatus("IDLE");
             setProgress(0);
         }
@@ -286,7 +286,7 @@ export default function CleanRoomPage() {
                     <button
                         onClick={() => {
                             const template = { selectedDestination, selectedPII, savedAt: new Date().toISOString() };
-                            localStorage.setItem("adsynth_template", JSON.stringify(template));
+                            localStorage.setItem("faktoros_template", JSON.stringify(template));
                             setTemplateSaved(true);
                             setTimeout(() => setTemplateSaved(false), 2500);
                         }}
@@ -433,7 +433,7 @@ export default function CleanRoomPage() {
                                 <div className="space-y-4 relative z-10">
                                     <div className="flex items-center text-sm font-mono text-slate-300 bg-slate-800 border border-slate-700 p-4 rounded-xl">
                                         <FileIcon size={16} className={`mr-3 shrink-0 ${status === "DONE" ? 'text-green-400' : 'text-primary-400'}`} />
-                                        <span className="truncate flex-1">Generating: <strong>adsynth_clean_{file?.name}</strong></span>
+                                        <span className="truncate flex-1">Generating: <strong>faktoros_clean_{file?.name}</strong></span>
                                         <span className={`${status === "DONE" ? 'text-green-400' : 'text-primary-400'} font-bold ml-4 shrink-0`}>
                                             {status === "DONE" ? '100%' : `${progress}%`}
                                         </span>
@@ -473,7 +473,7 @@ export default function CleanRoomPage() {
                                                 </div>
 
                                                 <button
-                                                    onClick={() => handleSync(`adsynth_clean_${file?.name}`, selectedDestination)}
+                                                    onClick={() => handleSync(`faktoros_clean_${file?.name}`, selectedDestination)}
                                                     className="bg-blue-600 border border-blue-500 text-white px-4 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase flex items-center hover:bg-blue-700 transition-colors shadow-lg shadow-blue-500/20 whitespace-nowrap flex-1 sm:flex-none justify-center"
                                                 >
                                                     <Send size={14} className="mr-2" /> Push

@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "AdSynth Dashboard - Privacy Engine",
+  title: "FaktorOS Dashboard - Privacy Engine",
   description: "Enterprise-grade synthetic data clean room built for regulated industries.",
 };
 

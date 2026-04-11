@@ -10,7 +10,7 @@ export default function ModelsPage() {
     const [saved, setSaved] = useState(false);
 
     useEffect(() => {
-        const config = localStorage.getItem("adsynth_modelConfig");
+        const config = localStorage.getItem("faktoros_modelConfig");
         if (config) {
             const parsed = JSON.parse(config);
             setModelType(parsed.modelType || "gaussian");
@@ -19,7 +19,7 @@ export default function ModelsPage() {
     }, []);
 
     const handleSave = () => {
-        localStorage.setItem("adsynth_modelConfig", JSON.stringify({ modelType, epochs }));
+        localStorage.setItem("faktoros_modelConfig", JSON.stringify({ modelType, epochs }));
         setSaved(true);
         setTimeout(() => setSaved(false), 2000);
     };

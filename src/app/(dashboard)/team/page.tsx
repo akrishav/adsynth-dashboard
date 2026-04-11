@@ -6,10 +6,10 @@ import { Search, Plus, ShieldCheck, User, X, CheckCircle2, AlertTriangle, Info, 
 import { useState } from "react";
 
 const INITIAL_MEMBERS = [
-    { name: "Sarah Chen", email: "sarah.c@adsynth.ai", role: "Privacy Officer", access: "Production, Research", mfa: "ENABLED", mfaStatus: "safe", avatar: "SC", perms: { capi: true, pii: false, logs: true } },
-    { name: "Marcus Knight", email: "m.knight@adsynth.ai", role: "Data Scientist", access: "Staging", mfa: "ENABLED", mfaStatus: "safe", avatar: "MK", perms: { capi: false, pii: false, logs: false } },
+    { name: "Sarah Chen", email: "sarah.c@faktoros.ai", role: "Privacy Officer", access: "Production, Research", mfa: "ENABLED", mfaStatus: "safe", avatar: "SC", perms: { capi: true, pii: false, logs: true } },
+    { name: "Marcus Knight", email: "m.knight@faktoros.ai", role: "Data Scientist", access: "Staging", mfa: "ENABLED", mfaStatus: "safe", avatar: "MK", perms: { capi: false, pii: false, logs: false } },
     { name: "Lena Ross", email: "l.ross@audit.com", role: "External Auditor", access: "Audit Logs", mfa: "SMS-ONLY", mfaStatus: "warning", avatar: "LR", perms: { capi: false, pii: false, logs: true } },
-    { name: "James Bennet", email: "j.bennet@adsynth.ai", role: "DevOps", access: "Infrastructure", mfa: "DISABLED", mfaStatus: "danger", avatar: "JB", perms: { capi: true, pii: false, logs: false } },
+    { name: "James Bennet", email: "j.bennet@faktoros.ai", role: "DevOps", access: "Infrastructure", mfa: "DISABLED", mfaStatus: "danger", avatar: "JB", perms: { capi: true, pii: false, logs: false } },
 ];
 
 function Toggle({ enabled, onChange }: { enabled: boolean; onChange: () => void }) {

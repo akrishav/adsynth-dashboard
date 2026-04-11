@@ -43,7 +43,7 @@ export function Sidebar() {
                 <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center text-white font-bold">
                     <Zap size={20} fill="currentColor" />
                 </div>
-                <span className="text-xl font-bold tracking-tight text-slate-900">AdSynth</span>
+                <span className="text-xl font-bold tracking-tight text-slate-900">FaktorOS</span>
             </div>
 
             <nav className="flex-1 px-4 space-y-1 overflow-y-auto">

@@ -87,7 +87,7 @@ export default function InstallPage() {
                                 placeholder="arn:aws:kms:us-east-1:123456789012:key/..."
                                 className="w-full px-4 py-3 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-primary-500 font-mono text-sm placeholder:text-slate-400"
                             />
-                            <p className="text-[11px] italic text-slate-400 mt-2">AdSynth requires 'Encrypt' and 'Decrypt' permissions on the provided KMS key.</p>
+                            <p className="text-[11px] italic text-slate-400 mt-2">FaktorOS requires 'Encrypt' and 'Decrypt' permissions on the provided KMS key.</p>
                         </div>
                     </div>
                 </div>
@@ -101,7 +101,7 @@ export default function InstallPage() {
                             <Info size={16} className="text-primary-500 mr-3 mt-0.5 shrink-0" />
                             <div>
                                 <h4 className="text-sm font-bold text-slate-900 mb-1">VPC Peering</h4>
-                                <p className="text-xs leading-relaxed text-slate-600">Ensure the target VPC has an active peering connection to the AdSynth Management Hub.</p>
+                                <p className="text-xs leading-relaxed text-slate-600">Ensure the target VPC has an active peering connection to the FaktorOS Management Hub.</p>
                             </div>
                         </div>
 
@@ -109,7 +109,7 @@ export default function InstallPage() {
                             <Lock size={16} className="text-primary-500 mr-3 mt-0.5 shrink-0" />
                             <div>
                                 <h4 className="text-sm font-bold text-slate-900 mb-1">Egress Rules</h4>
-                                <p className="text-xs leading-relaxed text-slate-600">Port 443 must be open for outbound traffic to the AdSynth Global Registry.</p>
+                                <p className="text-xs leading-relaxed text-slate-600">Port 443 must be open for outbound traffic to the FaktorOS Global Registry.</p>
                             </div>
                         </div>
 

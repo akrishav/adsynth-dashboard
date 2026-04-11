@@ -65,7 +65,7 @@ export default function LoginPage() {
                     <div className="w-5 h-5 bg-slate-300 rounded flex items-center justify-center text-white">
                         <Zap size={12} fill="currentColor" />
                     </div>
-                    <span className="font-bold tracking-tight text-lg">AdSynth</span>
+                    <span className="font-bold tracking-tight text-lg">FaktorOS</span>
                 </div>
             </div>
         </div>

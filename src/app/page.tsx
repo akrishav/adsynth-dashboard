@@ -12,7 +12,7 @@ export default function LandingPage() {
               <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white">
                 <Zap size={20} fill="currentColor" />
               </div>
-              <span className="font-bold text-xl tracking-tight text-slate-900">AdSynth</span>
+              <span className="font-bold text-xl tracking-tight text-slate-900">FaktorOS</span>
             </div>
 
             <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
@@ -72,7 +72,7 @@ export default function LandingPage() {
 
                 <div className="w-48 h-48 bg-slate-900 rounded-2xl shadow-xl flex flex-col items-center justify-center text-white p-6 relative z-20">
                   <Zap size={48} className="text-primary-400 mb-4" fill="currentColor" />
-                  <span className="font-bold tracking-widest text-sm text-center">ADSYNTH GAN ENGINE</span>
+                  <span className="font-bold tracking-widest text-sm text-center">FAKTOROS GAN ENGINE</span>
                 </div>
 
                 <div className="flex w-full max-w-xs justify-between mt-4">
@@ -122,8 +122,8 @@ export default function LandingPage() {
 
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { step: '01', title: 'Ingest', icon: Lock, desc: 'Securely connect your 1st party data sources via API or Direct SQL. AdSynth handles encryption at rest and in transit before preprocessing.' },
-            { step: '02', title: 'Synthesize', icon: Cpu, desc: 'Generate high-fidelity synthetic twins via the AdSynth GAN Engine. Our models preserve 99% of statistical variance while scrubbing all PII.' },
+            { step: '01', title: 'Ingest', icon: Lock, desc: 'Securely connect your 1st party data sources via API or Direct SQL. FaktorOS handles encryption at rest and in transit before preprocessing.' },
+            { step: '02', title: 'Synthesize', icon: Cpu, desc: 'Generate high-fidelity synthetic twins via the FaktorOS GAN Engine. Our models preserve 99% of statistical variance while scrubbing all PII.' },
             { step: '03', title: 'Activate', icon: Zap, desc: 'Stream privacy-safe signals directly to ad platforms like Meta, Google, and Tiktok to fuel their machine learning algorithms.' }
           ].map((item, i) => (
             <div key={i} className="bg-white border border-slate-100 shadow-sm rounded-2xl p-8 hover:shadow-md transition-shadow">
@@ -198,7 +198,7 @@ export default function LandingPage() {
       <div id="solutions" className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
         <h2 id="pricing" className="text-4xl font-bold text-slate-900 mb-6">Ready to reclaim your ROAS?</h2>
         <p className="text-lg text-slate-600 mb-10">
-          Join 50+ enterprise teams using AdSynth to drive ad performance in a post-cookie world.
+          Join 50+ enterprise teams using FaktorOS to drive ad performance in a post-cookie world.
         </p>
         <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
           <Link href="/sign-up" className="bg-primary-500 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-primary-600 transition-colors w-full sm:w-auto text-center shadow-lg shadow-primary-500/30">
@@ -220,7 +220,7 @@ export default function LandingPage() {
                 <div className="w-6 h-6 bg-slate-900 rounded-md flex items-center justify-center text-white">
                   <Zap size={14} fill="currentColor" />
                 </div>
-                <span className="font-bold text-slate-900">AdSynth</span>
+                <span className="font-bold text-slate-900">FaktorOS</span>
               </div>
               <p className="text-xs text-slate-500 mb-6">The world's leading synthetic data clean room for performance marketing, built by privacy engineers, for growth teams.</p>
               <div className="flex space-x-4">
@@ -261,7 +261,7 @@ export default function LandingPage() {
           </div>
 
           <div className="border-t border-slate-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
-            <p>© 2026 AdSynth Labs, Inc. All rights reserved.</p>
+            <p>© 2026 FaktorOS Labs, Inc. All rights reserved.</p>
             <div className="flex items-center space-x-2 mt-4 md:mt-0">
               <span className="w-2 h-2 rounded-full bg-green-500"></span>
               <span>ALL SYSTEMS OPERATIONAL</span>

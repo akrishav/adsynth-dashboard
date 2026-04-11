@@ -8,7 +8,7 @@ export default function CompliancePage() {
     const [report, setReport] = useState<any>(null);
 
     useEffect(() => {
-        const saved = localStorage.getItem("adsynth_latest_report");
+        const saved = localStorage.getItem("faktoros_latest_report");
         if (saved) {
             try {
                 setReport(JSON.parse(saved));
@@ -61,7 +61,7 @@ export default function CompliancePage() {
                             <ShieldCheck size={32} />
                         </div>
                         <h1 className="text-3xl font-black text-slate-900 tracking-tight mb-2">Mathematical Certificate of Privacy</h1>
-                        <p className="text-sm font-bold text-slate-500 uppercase tracking-widest">AdSynth Enterprise Governance</p>
+                        <p className="text-sm font-bold text-slate-500 uppercase tracking-widest">FaktorOS Enterprise Governance</p>
                     </div>
 
                     <div className="relative z-10 grid grid-cols-2 gap-12 mb-12">

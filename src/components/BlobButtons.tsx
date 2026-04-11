@@ -11,7 +11,7 @@ export function ExecSummaryDownload({ stats }: { stats: any }) {
         setDownloading(true);
         try {
             const reportContent = `
-AdSynth Enterprise Executive Summary
+FaktorOS Enterprise Executive Summary
 -------------------------------------
 Generated: ${new Date().toLocaleString()}
 
@@ -29,7 +29,7 @@ All system telemetry indicates optimal mathematical privacy retention.
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
-            a.download = `AdSynth_Executive_Summary_${Date.now()}.txt`;
+            a.download = `FaktorOS_Executive_Summary_${Date.now()}.txt`;
             a.click();
             URL.revokeObjectURL(url);
         } catch (err) {
@@ -66,7 +66,7 @@ export function CSVExportButton({ logs }: { logs: any[] }) {
             const url = URL.createObjectURL(blob);
             const a = document.createElement("a");
             a.href = url;
-            a.download = `AdSynth_Global_Audit_Logs_${Date.now()}.csv`;
+            a.download = `FaktorOS_Global_Audit_Logs_${Date.now()}.csv`;
             a.click();
             URL.revokeObjectURL(url);
         } catch (err) {

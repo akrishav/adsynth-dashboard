@@ -39,8 +39,8 @@ export default function DataSourcesPage() {
             const bodyData = new FormData();
             bodyData.append("connection_string", connString);
             bodyData.append("table_name", tableName);
-            bodyData.append("model_type", JSON.parse(localStorage.getItem("adsynth_modelConfig") || "{}").modelType || "gaussian");
-            bodyData.append("epochs", JSON.parse(localStorage.getItem("adsynth_modelConfig") || "{}").epochs || "10");
+            bodyData.append("model_type", JSON.parse(localStorage.getItem("faktoros_modelConfig") || "{}").modelType || "gaussian");
+            bodyData.append("epochs", JSON.parse(localStorage.getItem("faktoros_modelConfig") || "{}").epochs || "10");
 
             const apiUrl = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
             const response = await fetch(`${apiUrl}/api/synthesize/db`, {
@@ -79,7 +79,7 @@ export default function DataSourcesPage() {
 
                             if (data.csv_data) {
                                 if (data.metrics) {
-                                  localStorage.setItem("adsynth_latest_report", JSON.stringify({
+                                  localStorage.setItem("faktoros_latest_report", JSON.stringify({
                                      fileName: `Postgres [${tableName}]`,
                                      timestamp: new Date().toISOString(),
                                      metrics: data.metrics
@@ -230,7 +230,7 @@ export default function DataSourcesPage() {
                         <Lock size={32} className="text-slate-400 mb-4" />
                         <h2 className="text-lg font-bold text-slate-900 mb-2">Enterprise Tier Required</h2>
                         <p className="text-sm text-slate-500 max-w-sm mb-6">
-                            Native integration for {selectedIntegration} requires connecting through a managed VPN tunnel currently available exclusively on the Enterprise AdSynth Tier.
+                            Native integration for {selectedIntegration} requires connecting through a managed VPN tunnel currently available exclusively on the Enterprise FaktorOS Tier.
                         </p>
                         <button className="bg-white border border-slate-200 text-slate-900 px-6 py-2.5 rounded-lg text-xs font-bold tracking-wider uppercase hover:bg-slate-50 transition-colors shadow-sm">
                             Upgrade Plan
@@ -243,7 +243,7 @@ export default function DataSourcesPage() {
                     <div>
                         <h4 className="text-sm font-bold text-amber-900">Zero Trust Architecture</h4>
                         <p className="text-xs text-amber-700/80 mt-1 leading-relaxed">
-                            Database connections are established exclusively inside an ephemeral, containerized secure enclave. No credentials or data are permanently stored by AdSynth or replicated outside of the direct synthesis stream.
+                            Database connections are established exclusively inside an ephemeral, containerized secure enclave. No credentials or data are permanently stored by FaktorOS or replicated outside of the direct synthesis stream.
                         </p>
                     </div>
                 </div>

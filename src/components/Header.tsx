@@ -48,7 +48,7 @@ const HELP_ITEMS = [
     { label: "Documentation", href: "https://github.com", icon: ExternalLink },
     { label: "API Reference", href: "https://github.com", icon: ExternalLink },
     { label: "Privacy Guide (DP101)", href: "#science", icon: ExternalLink },
-    { label: "Contact Support", href: "mailto:support@adsynth.ai", icon: ExternalLink },
+    { label: "Contact Support", href: "mailto:support@faktoros.ai", icon: ExternalLink },
 ];
 
 export function Header({ title, breadcrumbs, action }: HeaderProps) {
@@ -77,7 +77,7 @@ export function Header({ title, breadcrumbs, action }: HeaderProps) {
             <div className="flex items-center space-x-2 text-sm">
                 {breadcrumbs ? (
                     <div className="flex items-center space-x-2 text-slate-500">
-                        <span className="font-semibold text-slate-900">AdSynth</span>
+                        <span className="font-semibold text-slate-900">FaktorOS</span>
                         {breadcrumbs.map((crumb, idx) => (
                             <div key={idx} className="flex items-center space-x-2">
                                 <span className="text-slate-300">/</span>
@@ -183,7 +183,7 @@ export function Header({ title, breadcrumbs, action }: HeaderProps) {
                                     ))}
                                 </div>
                                 <div className="border-t border-slate-100 px-4 py-3">
-                                    <p className="text-[10px] text-slate-400">AdSynth v2.4.0 · SOC2 Type II</p>
+                                    <p className="text-[10px] text-slate-400">FaktorOS v2.4.0 · SOC2 Type II</p>
                                 </div>
                             </div>
                         )}

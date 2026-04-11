@@ -9,7 +9,7 @@ export default function Page() {
         <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white">
           <Zap size={20} fill="currentColor" />
         </div>
-        <span className="font-bold text-2xl tracking-tight text-slate-900">AdSynth</span>
+        <span className="font-bold text-2xl tracking-tight text-slate-900">FaktorOS</span>
       </Link>
       <SignIn path="/sign-in" routing="path" signUpUrl="/sign-up" forceRedirectUrl="/dashboard" />
     </div>
