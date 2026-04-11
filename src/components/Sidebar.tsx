@@ -1,9 +1,9 @@
 "use client";
 
 import { UserButton } from "@clerk/nextjs";
-
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { FaktorOSWordmark } from "@/components/FaktorOSLogo";
 import {
     BarChart2,
     Settings,
@@ -39,11 +39,8 @@ export function Sidebar() {
 
     return (
         <div className="w-64 h-screen border-r border-slate-200 bg-white flex flex-col fixed left-0 top-0">
-            <div className="p-6 flex items-center space-x-3">
-                <div className="w-8 h-8 bg-primary-500 rounded-lg flex items-center justify-center text-white font-bold">
-                    <Zap size={20} fill="currentColor" />
-                </div>
-                <span className="text-xl font-bold tracking-tight text-slate-900">FaktorOS</span>
+            <div className="p-6 border-b border-slate-100">
+                <FaktorOSWordmark size={30} textClass="text-lg font-bold tracking-tight text-slate-900" />
             </div>
 
             <nav className="flex-1 px-4 space-y-1 overflow-y-auto">

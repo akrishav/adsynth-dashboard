@@ -1,5 +1,6 @@
 import Link from "next/link";
-import { ArrowRight, Lock, Server, Zap, ShieldCheck, Database, List, Cpu } from "lucide-react";
+import { ArrowRight, Lock, Server, ShieldCheck, Database, List, Cpu } from "lucide-react";
+import { FaktorOSWordmark, FaktorOSMark } from "@/components/FaktorOSLogo";
 
 export default function LandingPage() {
   return (
@@ -8,11 +9,8 @@ export default function LandingPage() {
       <nav className="border-b border-slate-100 sticky top-0 bg-white/80 backdrop-blur-md z-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            <div className="flex-shrink-0 flex items-center space-x-2">
-              <div className="w-8 h-8 bg-slate-900 rounded-lg flex items-center justify-center text-white">
-                <Zap size={20} fill="currentColor" />
-              </div>
-              <span className="font-bold text-xl tracking-tight text-slate-900">FaktorOS</span>
+            <div className="flex-shrink-0 flex items-center">
+              <FaktorOSWordmark size={34} textClass="text-xl font-bold tracking-tight text-slate-900" />
             </div>
 
             <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
@@ -71,7 +69,7 @@ export default function LandingPage() {
                 </div>
 
                 <div className="w-48 h-48 bg-slate-900 rounded-2xl shadow-xl flex flex-col items-center justify-center text-white p-6 relative z-20">
-                  <Zap size={48} className="text-primary-400 mb-4" fill="currentColor" />
+                  <FaktorOSMark size={64} className="mb-4" />
                   <span className="font-bold tracking-widest text-sm text-center">FAKTOROS GAN ENGINE</span>
                 </div>
 
@@ -124,7 +122,7 @@ export default function LandingPage() {
           {[
             { step: '01', title: 'Ingest', icon: Lock, desc: 'Securely connect your 1st party data sources via API or Direct SQL. FaktorOS handles encryption at rest and in transit before preprocessing.' },
             { step: '02', title: 'Synthesize', icon: Cpu, desc: 'Generate high-fidelity synthetic twins via the FaktorOS GAN Engine. Our models preserve 99% of statistical variance while scrubbing all PII.' },
-            { step: '03', title: 'Activate', icon: Zap, desc: 'Stream privacy-safe signals directly to ad platforms like Meta, Google, and Tiktok to fuel their machine learning algorithms.' }
+            { step: '03', title: 'Activate', icon: ArrowRight, desc: 'Stream privacy-safe signals directly to ad platforms like Meta, Google, and Tiktok to fuel their machine learning algorithms.' }
           ].map((item, i) => (
             <div key={i} className="bg-white border border-slate-100 shadow-sm rounded-2xl p-8 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-white mb-6">
@@ -216,11 +214,8 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="col-span-2 md:col-span-1">
-              <div className="flex items-center space-x-2 mb-4">
-                <div className="w-6 h-6 bg-slate-900 rounded-md flex items-center justify-center text-white">
-                  <Zap size={14} fill="currentColor" />
-                </div>
-                <span className="font-bold text-slate-900">FaktorOS</span>
+              <div className="mb-4">
+                <FaktorOSWordmark size={28} textClass="font-bold text-slate-900" />
               </div>
               <p className="text-xs text-slate-500 mb-6">The world's leading synthetic data clean room for performance marketing, built by privacy engineers, for growth teams.</p>
               <div className="flex space-x-4">

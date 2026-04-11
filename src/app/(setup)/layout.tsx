@@ -1,4 +1,5 @@
-import { HelpCircle, Zap } from "lucide-react";
+import { HelpCircle } from "lucide-react";
+import { FaktorOSWordmark } from "@/components/FaktorOSLogo";
 
 export default function SetupLayout({
     children,
@@ -9,10 +10,7 @@ export default function SetupLayout({
         <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
             <header className="h-16 border-b border-slate-200 bg-white flex items-center justify-between px-8">
                 <div className="flex items-center space-x-2">
-                    <div className="w-6 h-6 bg-primary-500 rounded flex items-center justify-center text-white">
-                        <Zap size={14} fill="currentColor" />
-                    </div>
-                    <span className="font-bold text-slate-900 tracking-tight">FAKTOROS <span className="text-slate-400 font-medium ml-1">INSTALLATION</span></span>
+                <FaktorOSWordmark size={28} textClass="font-bold text-slate-900 tracking-tight text-base" />
                 </div>
 
                 <div className="flex items-center space-x-6 text-xs font-bold tracking-wider uppercase">
