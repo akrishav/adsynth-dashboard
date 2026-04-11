@@ -1,8 +1,12 @@
 /**
- * FaktorOS Logo Mark — SVG-based, works at any size.
- * The mark is a stylised "Fk" monogram formed by a bold "F"
- * with a diagonal data-flow accent slash — communicating speed,
- * data transformation, and privacy in a single geometric glyph.
+ * FaktorOS Logo — Premium SVG mark.
+ *
+ * Design language: Modern dark-nav SaaS (Linear / Vercel feel)
+ * - Deep navy rounded square background (#0F172A → #1E293B)
+ * - Bold white vertical stem of the "F"
+ * - Top & mid crossbars use a sky-blue → indigo gradient
+ * - Small glowing accent node in corner (data-pipeline motif)
+ * - Wordmark: "Faktor" slate-900 bold + "OS" sky→indigo gradient text
  */
 
 interface LogoMarkProps {
@@ -10,64 +14,102 @@ interface LogoMarkProps {
     className?: string;
 }
 
-/** Just the icon mark (square) */
 export function FaktorOSMark({ size = 32, className = "" }: LogoMarkProps) {
     return (
         <svg
             width={size}
             height={size}
-            viewBox="0 0 32 32"
+            viewBox="0 0 36 36"
             fill="none"
             xmlns="http://www.w3.org/2000/svg"
             className={className}
         >
-            {/* Rounded square background with subtle gradient */}
             <defs>
-                <linearGradient id="bg-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="#0ea5e9" />
-                    <stop offset="100%" stopColor="#0284c7" />
+                {/* Dark navy background gradient */}
+                <linearGradient id="fos-bg" x1="0" y1="0" x2="36" y2="36" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#1E293B" />
+                    <stop offset="100%" stopColor="#0C1220" />
                 </linearGradient>
-                <linearGradient id="accent-grad" x1="0" y1="0" x2="32" y2="32" gradientUnits="userSpaceOnUse">
-                    <stop offset="0%" stopColor="#ffffff" stopOpacity="0.9" />
-                    <stop offset="100%" stopColor="#bae6fd" stopOpacity="0.8" />
+
+                {/* Sky → Indigo accent gradient for crossbars */}
+                <linearGradient id="fos-bar" x1="9" y1="0" x2="27" y2="0" gradientUnits="userSpaceOnUse">
+                    <stop offset="0%" stopColor="#38BDF8" />
+                    <stop offset="100%" stopColor="#818CF8" />
                 </linearGradient>
+
+                {/* Soft glow filter */}
+                <filter id="fos-glow" x="-50%" y="-50%" width="200%" height="200%">
+                    <feGaussianBlur stdDeviation="1.5" result="blur" />
+                    <feMerge>
+                        <feMergeNode in="blur" />
+                        <feMergeNode in="SourceGraphic" />
+                    </feMerge>
+                </filter>
             </defs>
 
-            <rect width="32" height="32" rx="8" fill="url(#bg-grad)" />
+            {/* Rounded square background */}
+            <rect width="36" height="36" rx="9" fill="url(#fos-bg)" />
 
-            {/* Bold F strokes */}
-            {/* Vertical stem */}
-            <rect x="7" y="7" width="3.5" height="18" rx="1.5" fill="white" />
-            {/* Top horizontal bar */}
-            <rect x="7" y="7" width="14" height="3.5" rx="1.5" fill="white" />
-            {/* Mid horizontal bar */}
-            <rect x="7" y="14.25" width="10" height="3" rx="1.5" fill="white" />
+            {/* Subtle inner highlight on top edge */}
+            <rect width="36" height="1.5" rx="0.75" fill="white" opacity="0.05" />
 
-            {/* Accent slash — "data pipeline" diagonal */}
-            <path
-                d="M20 18 L26 25"
-                stroke="url(#accent-grad)"
-                strokeWidth="3"
-                strokeLinecap="round"
-            />
-            <circle cx="26" cy="25" r="2" fill="white" opacity="0.7" />
+            {/* ── F mark ── */}
+
+            {/* Vertical stem — pure white, slightly rounded */}
+            <rect x="9" y="8" width="3.5" height="20.5" rx="1.75" fill="white" opacity="0.92" />
+
+            {/* Top crossbar — sky→indigo gradient, bold */}
+            <rect x="9" y="8" width="16" height="3.5" rx="1.75" fill="url(#fos-bar)" />
+
+            {/* Mid crossbar — same gradient, slightly shorter & lighter */}
+            <rect x="9" y="16.5" width="11.5" height="3" rx="1.5" fill="url(#fos-bar)" opacity="0.75" />
+
+            {/* ── Accent: data-node dot in bottom-right ── */}
+            {/* Outer glow ring */}
+            <circle cx="26.5" cy="26.5" r="3.5" fill="#38BDF8" opacity="0.15" />
+            {/* Mid ring */}
+            <circle cx="26.5" cy="26.5" r="2.2" fill="#38BDF8" opacity="0.3" filter="url(#fos-glow)" />
+            {/* Core dot */}
+            <circle cx="26.5" cy="26.5" r="1.3" fill="#7DD3FC" />
         </svg>
     );
 }
 
-/** Full wordmark: mark + "FaktorOS" text together */
+/** Full wordmark: mark + styled gradient "FaktorOS" text */
 export function FaktorOSWordmark({
     size = 32,
-    textClass = "text-xl font-bold tracking-tight text-slate-900",
+    className = "",
 }: {
     size?: number;
-    textClass?: string;
+    className?: string;
 }) {
     return (
-        <div className="flex items-center space-x-2.5">
+        <div className={`flex items-center space-x-2.5 ${className}`}>
             <FaktorOSMark size={size} />
-            <span className={textClass}>
-                Faktor<span className="text-sky-500">OS</span>
+            <span
+                className="font-black tracking-tight select-none"
+                style={{ fontSize: size * 0.6 }}
+            >
+                <span
+                    style={{
+                        background: "linear-gradient(135deg, #0f172a 60%, #334155)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                    }}
+                >
+                    Faktor
+                </span>
+                <span
+                    style={{
+                        background: "linear-gradient(135deg, #38BDF8 0%, #818CF8 100%)",
+                        WebkitBackgroundClip: "text",
+                        WebkitTextFillColor: "transparent",
+                        backgroundClip: "text",
+                    }}
+                >
+                    OS
+                </span>
             </span>
         </div>
     );
