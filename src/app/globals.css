@@ -4,19 +4,19 @@
   --color-background: #fafafa;
   --color-foreground: #0f172a;
 
-  /* ── FaktorOS Brand Palette: Violet-Indigo ── */
-  --color-primary-50:  #f3f0ff;
-  --color-primary-100: #ede9fe;
-  --color-primary-200: #ddd6fe;
-  --color-primary-300: #c4b5fd;
-  --color-primary-400: #a78bfa;
-  --color-primary-500: #8b5cf6;   /* violet-500 — primary action color */
-  --color-primary-600: #7c3aed;   /* violet-600 — hover */
+  /* ── FaktorOS "OS" theme: sky-cyan → violet ── */
+  --color-primary-50:  #f0f7ff;
+  --color-primary-100: #dbeeff;
+  --color-primary-200: #c4dcff;
+  --color-primary-300: #93c5fd;
+  --color-primary-400: #38bdf8;
+  --color-primary-500: #8b5cf6;   /* mid-gradient violet — solid fallback */
+  --color-primary-600: #7c3aed;
   --color-primary-700: #6d28d9;
 
-  /* ── FaktorOS gradient endpoints (for gradient utilities) ── */
-  --color-brand-cyan:   #38bdf8;  /* sky cyan — logo start */
-  --color-brand-violet: #a78bfa;  /* soft violet — logo end */
+  /* Brand gradient endpoints */
+  --color-brand-from: #38bdf8;   /* sky-400 */
+  --color-brand-to:   #a78bfa;   /* violet-400 */
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -26,4 +26,41 @@ body {
   background-color: var(--color-background);
   color: var(--color-foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+}
+
+/* ──────────────────────────────────────────────
+   FaktorOS global gradient utilities
+   These let any element use the brand gradient
+   ────────────────────────────────────────────── */
+
+/* Gradient background — use on buttons, badges, highlights */
+.bg-os-gradient {
+  background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 100%);
+}
+
+/* Gradient text — for headings, labels */
+.text-os-gradient {
+  background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient border glow */
+.border-os-gradient {
+  border: 1.5px solid transparent;
+  background-clip: padding-box;
+  box-shadow: 0 0 0 1.5px #a78bfa55, 0 0 16px 0 #38bdf822;
+}
+
+/* Active sidebar highlight */
+.nav-active-gradient {
+  background: linear-gradient(90deg, #38bdf812 0%, #a78bfa18 100%);
+  color: #8b5cf6;
+  border-left: 2px solid #a78bfa;
+}
+
+/* Glow shadow for primary buttons */
+.shadow-os {
+  box-shadow: 0 4px 20px 0 #8b5cf640;
 }

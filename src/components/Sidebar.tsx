@@ -53,7 +53,7 @@ export function Sidebar() {
                             className={cn(
                                 "flex items-center space-x-3 px-3 py-2.5 rounded-lg text-sm font-medium transition-colors",
                                 isActive
-                                    ? "bg-primary-50 text-primary-600"
+                                    ? "nav-active-gradient"
                                     : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
                             )}
                         >
