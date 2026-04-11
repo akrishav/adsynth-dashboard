@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #fafafa;
+  --color-background: #ffffff;
   --color-foreground: #0f172a;
 
   /* ── FaktorOS "OS" theme: sky-cyan → violet ── */
