@@ -70,7 +70,7 @@ export default function LandingPage() {
                 </div>
 
                 <div className="w-48 h-48 bg-slate-900 rounded-2xl shadow-xl flex flex-col items-center justify-center text-white p-6 relative z-20">
-                  <Image src="/logo.png" alt="FaktorOS" width={72} height={72} className="mb-3" priority />
+                  <Image src="/logo-dark.png" alt="FaktorOS" width={72} height={72} className="mb-3" priority />
                   <span className="font-bold tracking-widest text-sm text-center">FAKTOROS GAN ENGINE</span>
                 </div>
 
