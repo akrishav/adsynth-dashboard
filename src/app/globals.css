@@ -1,13 +1,22 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #f8fafc;
+  --color-background: #fafafa;
   --color-foreground: #0f172a;
 
-  --color-primary-50: #f0f9ff;
-  --color-primary-100: #e0f2fe;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #0284c7;
+  /* ── FaktorOS Brand Palette: Violet-Indigo ── */
+  --color-primary-50:  #f3f0ff;
+  --color-primary-100: #ede9fe;
+  --color-primary-200: #ddd6fe;
+  --color-primary-300: #c4b5fd;
+  --color-primary-400: #a78bfa;
+  --color-primary-500: #8b5cf6;   /* violet-500 — primary action color */
+  --color-primary-600: #7c3aed;   /* violet-600 — hover */
+  --color-primary-700: #6d28d9;
+
+  /* ── FaktorOS gradient endpoints (for gradient utilities) ── */
+  --color-brand-cyan:   #38bdf8;  /* sky cyan — logo start */
+  --color-brand-violet: #a78bfa;  /* soft violet — logo end */
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
