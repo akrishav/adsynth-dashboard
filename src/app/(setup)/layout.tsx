@@ -10,7 +10,7 @@ export default function SetupLayout({
         <div className="min-h-screen bg-slate-50 flex flex-col font-sans">
             <header className="h-16 border-b border-slate-200 bg-white flex items-center justify-between px-8">
                 <div className="flex items-center space-x-2">
-                <FaktorOSWordmark size={28} textClass="font-bold text-slate-900 tracking-tight text-base" />
+                <FaktorOSWordmark size={28} />
                 </div>
 
                 <div className="flex items-center space-x-6 text-xs font-bold tracking-wider uppercase">

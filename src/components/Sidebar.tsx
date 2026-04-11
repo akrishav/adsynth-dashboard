@@ -40,7 +40,7 @@ export function Sidebar() {
     return (
         <div className="w-64 h-screen border-r border-slate-200 bg-white flex flex-col fixed left-0 top-0">
             <div className="p-6 border-b border-slate-100">
-                <FaktorOSWordmark size={30} textClass="text-lg font-bold tracking-tight text-slate-900" />
+                <FaktorOSWordmark size={30} />
             </div>
 
             <nav className="flex-1 px-4 space-y-1 overflow-y-auto">

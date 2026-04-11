@@ -10,7 +10,7 @@ export default function LandingPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex-shrink-0 flex items-center">
-              <FaktorOSWordmark size={34} textClass="text-xl font-bold tracking-tight text-slate-900" />
+              <FaktorOSWordmark size={34} />
             </div>
 
             <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
@@ -215,7 +215,7 @@ export default function LandingPage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="col-span-2 md:col-span-1">
               <div className="mb-4">
-                <FaktorOSWordmark size={28} textClass="font-bold text-slate-900" />
+                <FaktorOSWordmark size={28} />
               </div>
               <p className="text-xs text-slate-500 mb-6">The world's leading synthetic data clean room for performance marketing, built by privacy engineers, for growth teams.</p>
               <div className="flex space-x-4">
