@@ -23,7 +23,7 @@ export default function LandingPage() {
 
             <div className="flex items-center space-x-4 text-sm font-medium">
               <Link href="/sign-in" className="text-slate-600 hover:text-slate-900 transition-colors">Log In</Link>
-              <Link href="/sign-up" className="bg-primary-500 text-white px-4 py-2 rounded-lg hover:bg-primary-600 transition-colors">
+              <Link href="/sign-up" className="bg-os-gradient text-white px-4 py-2 rounded-lg hover:opacity-90 transition-opacity shadow-os">
                 Get Started
               </Link>
             </div>
@@ -35,18 +35,18 @@ export default function LandingPage() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-20 pb-16 lg:pt-32 lg:pb-24">
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           <div className="mb-12 lg:mb-0">
-            <div className="inline-flex items-center space-x-2 bg-primary-50 text-primary-600 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
+            <div className="inline-flex items-center space-x-2 bg-os-gradient text-white px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
               <ShieldCheck size={14} />
               <span>Next-Gen Privacy Engine</span>
             </div>
             <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-6">
-              Restore Ad Performance with <span className="text-primary-500">Zero Privacy Risk</span>
+              Restore Ad Performance with <span className="text-os-gradient">Zero Privacy Risk</span>
             </h1>
             <p className="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
               The enterprise-grade synthetic data clean room built for regulated industries. Scale your Meta and Google performance <strong className="font-semibold text-slate-900">without</strong> compromising user privacy.
             </p>
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-              <Link href="/clean-room" className="bg-slate-900 text-white px-6 py-3.5 rounded-lg font-medium hover:bg-slate-800 transition-colors flex items-center justify-center group">
+              <Link href="/clean-room" className="bg-os-gradient text-white px-6 py-3.5 rounded-lg font-medium hover:opacity-90 transition-opacity flex items-center justify-center group shadow-os">
                 Start Synthesizing
                 <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
