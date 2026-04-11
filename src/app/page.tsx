@@ -1,6 +1,7 @@
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowRight, Lock, Server, ShieldCheck, Database, List, Cpu } from "lucide-react";
-import { FaktorOSWordmark, FaktorOSMark } from "@/components/FaktorOSLogo";
+import { FaktorOSWordmark } from "@/components/FaktorOSLogo";
 
 export default function LandingPage() {
   return (
@@ -69,7 +70,7 @@ export default function LandingPage() {
                 </div>
 
                 <div className="w-48 h-48 bg-slate-900 rounded-2xl shadow-xl flex flex-col items-center justify-center text-white p-6 relative z-20">
-                  <FaktorOSMark size={64} className="mb-4" />
+                  <Image src="/logo.png" alt="FaktorOS" width={72} height={72} className="mb-3" priority />
                   <span className="font-bold tracking-widest text-sm text-center">FAKTOROS GAN ENGINE</span>
                 </div>
 
