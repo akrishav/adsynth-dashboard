@@ -4,6 +4,7 @@
  * remain fully vibrant — the exact F shape, no dark glow artifacts.
  */
 import Image from "next/image";
+import Link from "next/link";
 
 interface LogoMarkProps {
     size?: number;
@@ -38,7 +39,7 @@ export function FaktorOSWordmark({
     className?: string;
 }) {
     return (
-        <div className={`flex items-center space-x-3 ${className}`}>
+        <Link href="/" className={`flex items-center space-x-3 hover:opacity-80 transition-opacity ${className}`}>
             <FaktorOSMark size={size * 0.8} />
             <span
                 className="font-semibold tracking-tight select-none"
@@ -46,6 +47,6 @@ export function FaktorOSWordmark({
             >
                 FaktorOS
             </span>
-        </div>
+        </Link>
     );
 }
