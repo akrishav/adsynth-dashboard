@@ -35,8 +35,8 @@ export default function LandingPage() {
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           <div className="mb-12 lg:mb-0">
             <div className="inline-flex items-center space-x-2 bg-primary-50 text-primary-600 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
-              <Cpu size={14} />
-              <span>Y Combinator Summer 2026</span>
+              <ShieldCheck size={14} />
+              <span>Zero-Retention Architecture</span>
             </div>
             <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-6">
               The AI Agent That Runs Ads <span className="text-primary-500">Autonomously</span>
