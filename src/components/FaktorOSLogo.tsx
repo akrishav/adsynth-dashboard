@@ -44,7 +44,7 @@ export function FaktorOSWordmark({
                 className="font-semibold tracking-tight select-none"
                 style={{ fontSize: size * 0.7, color: "#0056b3" }}
             >
-                faktorOS
+                FaktorOS
             </span>
         </div>
     );

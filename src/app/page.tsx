@@ -42,7 +42,7 @@ export default function LandingPage() {
               The AI Agent That Runs Ads <span className="text-primary-500">Autonomously</span>
             </h1>
             <p className="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
-              FaktorOS monitors performance across Meta, Google, and TikTok, pauses losing ad sets, and reallocates budget to winners. <strong className="font-semibold text-slate-900">Zero human intervention. Zero retained data.</strong>
+              FaktorOS monitors performance across Meta, Google, and TikTok, pauses losing ad sets, and reallocates budget to winners. <strong className="font-semibold text-slate-900">Zero Retention. Zero Risk.</strong>
             </p>
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
               <Link href="/activations" className="bg-slate-900 text-white px-6 py-3.5 rounded-lg font-medium hover:bg-slate-800 transition-colors flex items-center justify-center group">
