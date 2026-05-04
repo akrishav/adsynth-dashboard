@@ -11,16 +11,22 @@ interface LogoMarkProps {
 }
 
 export function FaktorOSMark({ size = 36, className = "" }: LogoMarkProps) {
+    // The interlocking circles logo (taller than it is wide)
+    const height = size * 1.6;
     return (
-        <Image
-            src="/logo.png"
-            alt="FaktorOS Logo"
-            width={size}
-            height={size}
+        <svg 
+            width={size} 
+            height={height} 
+            viewBox="0 0 100 160" 
             className={className}
-            style={{ mixBlendMode: "multiply" }}
-            priority
-        />
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+        >
+            {/* Top Circle - Black */}
+            <circle cx="50" cy="50" r="40" stroke="#000000" strokeWidth="12" />
+            {/* Bottom Circle - Navy Blue */}
+            <circle cx="50" cy="110" r="40" stroke="#0056b3" strokeWidth="12" />
+        </svg>
     );
 }
 
@@ -32,23 +38,13 @@ export function FaktorOSWordmark({
     className?: string;
 }) {
     return (
-        <div className={`flex items-center space-x-2.5 ${className}`}>
-            <FaktorOSMark size={size} />
+        <div className={`flex items-center space-x-3 ${className}`}>
+            <FaktorOSMark size={size * 0.8} />
             <span
-                className="font-black tracking-tight select-none"
-                style={{ fontSize: size * 0.56 }}
+                className="font-semibold tracking-tight select-none"
+                style={{ fontSize: size * 0.7, color: "#0056b3" }}
             >
-                <span style={{ color: "#0f172a" }}>Faktor</span>
-                <span
-                    style={{
-                        background: "linear-gradient(135deg, #38BDF8 0%, #A78BFA 100%)",
-                        WebkitBackgroundClip: "text",
-                        WebkitTextFillColor: "transparent",
-                        backgroundClip: "text",
-                    }}
-                >
-                    OS
-                </span>
+                faktorOS
             </span>
         </div>
     );

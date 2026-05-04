@@ -1,18 +1,18 @@
 @import "tailwindcss";
 
 @theme inline {
-  --color-background: #ffffff;
+  --color-background: #faf9f6; /* Creamy white */
   --color-foreground: #0f172a;
 
-  /* ── Original sky-blue theme ── */
-  --color-primary-50:  #f0f9ff;
-  --color-primary-100: #e0f2fe;
-  --color-primary-200: #bae6fd;
-  --color-primary-300: #7dd3fc;
-  --color-primary-400: #38bdf8;
-  --color-primary-500: #0ea5e9;
-  --color-primary-600: #0284c7;
-  --color-primary-700: #0369a1;
+  /* ── Navy Blue theme ── */
+  --color-primary-50:  #f0f4f8;
+  --color-primary-100: #d9e2ec;
+  --color-primary-200: #bcccdc;
+  --color-primary-300: #9fb3c8;
+  --color-primary-400: #4a7ab0;
+  --color-primary-500: #0056b3; /* Main logo color */
+  --color-primary-600: #004494;
+  --color-primary-700: #003370;
 
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
@@ -26,21 +26,21 @@ body {
 
 /* Sidebar active nav */
 .nav-active-gradient {
-  background: #e0f2fe;
-  color: #0284c7;
-  border-left: 2px solid #0ea5e9;
+  background: #d9e2ec;
+  color: #004494;
+  border-left: 2px solid #0056b3;
 }
 
 /* Kept for logo wordmark only */
 .text-os-gradient {
-  background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 100%);
+  background: linear-gradient(135deg, #0056b3 0%, #003370 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 .bg-os-gradient {
-  background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 100%);
+  background: linear-gradient(135deg, #0056b3 0%, #003370 100%);
 }
 .shadow-os {
-  box-shadow: 0 4px 24px 0 rgba(14, 165, 233, 0.3);
+  box-shadow: 0 4px 24px 0 rgba(0, 86, 179, 0.3);
 }
