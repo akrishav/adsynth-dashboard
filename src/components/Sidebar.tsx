@@ -21,14 +21,10 @@ import {
 import { cn } from "@/lib/utils";
 
 const navItems = [
-    { name: "Clean Room", href: "/clean-room", icon: Box },
-    { name: "Activations", href: "/activations", icon: Zap },
     { name: "Overview (ROI)", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Zero-Retention Sync", href: "/activations", icon: Zap },
+    { name: "Agent Rules", href: "/models", icon: Cpu },
     { name: "Data Sources", href: "/data-sources", icon: Database },
-    { name: "Models Configuration", href: "/models", icon: Cpu },
-    { name: "Proof of Privacy", href: "/compliance", icon: ShieldCheck },
-    { name: "Global Governance", href: "/governance", icon: Globe },
-    { name: "Engine Health", href: "/health", icon: Activity },
     { name: "Audit Logs", href: "/audit-logs", icon: List },
     { name: "Team & RBAC", href: "/team", icon: Users },
     { name: "Security Settings", href: "/settings", icon: Settings },
