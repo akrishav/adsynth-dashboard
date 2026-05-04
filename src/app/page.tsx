@@ -49,7 +49,7 @@ export default function LandingPage() {
                 View Live Dashboard
                 <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link href="mailto:founders@faktoros.com" className="bg-white border border-slate-200 text-slate-700 px-6 py-3.5 rounded-lg font-medium hover:bg-slate-50 transition-colors flex items-center justify-center">
+              <Link href="mailto:contact@faktoros.com" className="bg-white border border-slate-200 text-slate-700 px-6 py-3.5 rounded-lg font-medium hover:bg-slate-50 transition-colors flex items-center justify-center">
                 Book Enterprise Demo
               </Link>
             </div>
@@ -230,7 +230,7 @@ export default function LandingPage() {
                 <li className="flex items-center"><ArrowRight size={16} className="text-primary-400 mr-2" /> AWS Nitro Enclaves Zero-Retention</li>
                 <li className="flex items-center"><ArrowRight size={16} className="text-primary-400 mr-2" /> Enterprise CISO Compliance Pack</li>
               </ul>
-              <Link href="mailto:founders@faktoros.com" className="w-full inline-block text-center bg-primary-500 text-white py-3 rounded-xl font-semibold hover:bg-primary-600 transition-colors">
+              <Link href="mailto:contact@faktoros.com" className="w-full inline-block text-center bg-primary-500 text-white py-3 rounded-xl font-semibold hover:bg-primary-600 transition-colors">
                 Contact Sales
               </Link>
             </div>
