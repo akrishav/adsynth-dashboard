@@ -49,9 +49,9 @@ export default function LandingPage() {
                 View Live Dashboard
                 <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <button className="bg-white border border-slate-200 text-slate-700 px-6 py-3.5 rounded-lg font-medium hover:bg-slate-50 transition-colors  flex items-center justify-center">
+              <Link href="mailto:founders@faktoros.com" className="bg-white border border-slate-200 text-slate-700 px-6 py-3.5 rounded-lg font-medium hover:bg-slate-50 transition-colors flex items-center justify-center">
                 Book Enterprise Demo
-              </button>
+              </Link>
             </div>
           </div>
 
@@ -208,9 +208,9 @@ export default function LandingPage() {
                 <li className="flex items-center"><ShieldCheck size={16} className="text-green-500 mr-2" /> Analytics Dashboard</li>
                 <li className="flex items-center"><ShieldCheck size={16} className="text-green-500 mr-2" /> Basic Attestation Preview</li>
               </ul>
-              <button className="w-full bg-white border-2 border-primary-500 text-primary-600 py-3 rounded-xl font-semibold hover:bg-primary-50 transition-colors">
+              <Link href="/sign-up" className="w-full inline-block text-center bg-white border-2 border-primary-500 text-primary-600 py-3 rounded-xl font-semibold hover:bg-primary-50 transition-colors">
                 Start Free Trial
-              </button>
+              </Link>
             </div>
 
             {/* Enterprise Agentic DSP */}
@@ -230,9 +230,9 @@ export default function LandingPage() {
                 <li className="flex items-center"><ArrowRight size={16} className="text-primary-400 mr-2" /> AWS Nitro Enclaves Zero-Retention</li>
                 <li className="flex items-center"><ArrowRight size={16} className="text-primary-400 mr-2" /> Enterprise CISO Compliance Pack</li>
               </ul>
-              <button className="w-full bg-primary-500 text-white py-3 rounded-xl font-semibold hover:bg-primary-600 transition-colors">
+              <Link href="mailto:founders@faktoros.com" className="w-full inline-block text-center bg-primary-500 text-white py-3 rounded-xl font-semibold hover:bg-primary-600 transition-colors">
                 Contact Sales
-              </button>
+              </Link>
             </div>
           </div>
         </div>
