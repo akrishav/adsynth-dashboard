@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowRight, Lock, Server, ShieldCheck, Database, List, Cpu } from "lucide-react";
+import { ArrowRight, Lock, Server, ShieldCheck, Database, List, Cpu, Zap, Activity } from "lucide-react";
 import { FaktorOSWordmark } from "@/components/FaktorOSLogo";
 
 export default function LandingPage() {
@@ -15,9 +15,8 @@ export default function LandingPage() {
             </div>
 
             <div className="hidden md:flex space-x-8 text-sm font-medium text-slate-600">
-              <Link href="#platform" className="hover:text-slate-900 transition-colors">Platform</Link>
-              <Link href="#solutions" className="hover:text-slate-900 transition-colors">Solutions</Link>
-              <Link href="#science" className="hover:text-slate-900 transition-colors">Science</Link>
+              <Link href="#platform" className="hover:text-slate-900 transition-colors">How It Works</Link>
+              <Link href="#infrastructure" className="hover:text-slate-900 transition-colors">Zero-Retention Infrastructure</Link>
               <Link href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</Link>
             </div>
 
@@ -36,22 +35,22 @@ export default function LandingPage() {
         <div className="lg:grid lg:grid-cols-2 lg:gap-16 items-center">
           <div className="mb-12 lg:mb-0">
             <div className="inline-flex items-center space-x-2 bg-primary-50 text-primary-600 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider mb-6">
-              <ShieldCheck size={14} />
-              <span>Next-Gen Privacy Engine</span>
+              <Cpu size={14} />
+              <span>Y Combinator Summer 2026</span>
             </div>
             <h1 className="text-5xl lg:text-7xl font-bold tracking-tight text-slate-900 leading-[1.1] mb-6">
-              Restore Ad Performance with <span className="text-primary-500">Zero Privacy Risk</span>
+              The AI Agent That Runs Ads <span className="text-primary-500">Autonomously</span>
             </h1>
             <p className="text-lg text-slate-600 mb-8 max-w-xl leading-relaxed">
-              The enterprise-grade synthetic data clean room built for regulated industries. Scale your Meta and Google performance <strong className="font-semibold text-slate-900">without</strong> compromising user privacy.
+              FaktorOS monitors performance across Meta, Google, and TikTok, pauses losing ad sets, and reallocates budget to winners. <strong className="font-semibold text-slate-900">Zero human intervention. Zero retained data.</strong>
             </p>
             <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-              <Link href="/clean-room" className="bg-slate-900 text-white px-6 py-3.5 rounded-lg font-medium hover:bg-slate-800 transition-colors flex items-center justify-center group">
-                Start Synthesizing
+              <Link href="/activations" className="bg-slate-900 text-white px-6 py-3.5 rounded-lg font-medium hover:bg-slate-800 transition-colors flex items-center justify-center group">
+                View Live Dashboard
                 <ArrowRight size={18} className="ml-2 group-hover:translate-x-1 transition-transform" />
               </Link>
               <button className="bg-white border border-slate-200 text-slate-700 px-6 py-3.5 rounded-lg font-medium hover:bg-slate-50 transition-colors  flex items-center justify-center">
-                View Demo
+                Book Enterprise Demo
               </button>
             </div>
           </div>
@@ -62,26 +61,31 @@ export default function LandingPage() {
               {/* Decorative Grid bg */}
               <div className="absolute inset-0 bg-[linear-gradient(to_right,#f1f5f9_1px,transparent_1px),linear-gradient(to_bottom,#f1f5f9_1px,transparent_1px)] bg-[size:2rem_2rem] opacity-40"></div>
 
-              <div className="relative z-10 flex flex-col items-center space-y-8">
-                <div className="flex justify-between w-full max-w-xs text-slate-400 mb-4">
+              <div className="relative z-10 flex flex-col items-center space-y-8 w-full">
+                <div className="flex justify-between w-full max-w-xs text-slate-400 mb-2">
+                  <Activity size={20} className="text-green-500 animate-pulse" />
                   <Database size={20} />
                   <Server size={20} />
-                  <List size={20} />
                 </div>
 
-                <div className="w-48 h-48 bg-black rounded-2xl shadow-xl flex flex-col items-center justify-center text-white p-6 relative z-20">
-                  <Image src="/logo-dark.png" alt="FaktorOS" width={72} height={72} className="mb-3" priority />
-                  <span className="font-bold tracking-widest text-sm text-center">FAKTOROS GAN ENGINE</span>
+                <div className="w-full bg-slate-900 rounded-2xl shadow-xl flex flex-col items-center justify-center text-white p-6 relative z-20">
+                  <div className="text-xs font-mono text-primary-400 mb-2 w-full text-left">&gt; AUTONOMOUS_ACTION_LOG</div>
+                  <div className="text-xs font-mono text-slate-300 w-full text-left space-y-1">
+                    <p>[08:42] Analyzing Meta Campaign: Q3_Retargeting</p>
+                    <p className="text-red-400">[08:43] Ad Set 2 ROAS &lt; 1.5. Paused.</p>
+                    <p className="text-green-400">[08:43] Reallocating $500/day to Ad Set 1.</p>
+                    <p className="text-primary-300">[08:44] Action Complete. Memory Wiped.</p>
+                  </div>
                 </div>
 
-                <div className="flex w-full max-w-xs justify-between mt-4">
+                <div className="flex w-full max-w-xs justify-between mt-2">
                   <div className="bg-white border border-slate-200 shadow-sm rounded-xl p-3 flex flex-col items-center">
                     <div className="w-8 h-8 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold text-xs mb-1">f</div>
-                    <span className="text-[10px] font-medium text-slate-500">META PIXEL</span>
+                    <span className="text-[10px] font-medium text-slate-500">META API</span>
                   </div>
                   <div className="bg-white border border-slate-200 shadow-sm rounded-xl p-3 flex flex-col items-center">
                     <div className="w-8 h-8 rounded-full bg-red-500 flex items-center justify-center text-white font-bold text-xs mb-1">G</div>
-                    <span className="text-[10px] font-medium text-slate-500">G-ADS API</span>
+                    <span className="text-[10px] font-medium text-slate-500">GOOGLE ADS</span>
                   </div>
                 </div>
               </div>
@@ -92,8 +96,8 @@ export default function LandingPage() {
                   <ShieldCheck size={16} />
                 </div>
                 <div>
-                  <div className="text-xs font-bold text-slate-900">100% PII Secure</div>
-                  <div className="text-[10px] text-slate-500">ZERO LINKAGE DETECTED</div>
+                  <div className="text-xs font-bold text-slate-900">Zero-Retention Verified</div>
+                  <div className="text-[10px] text-slate-500">AWS NITRO ENCLAVES</div>
                 </div>
               </div>
             </div>
@@ -104,32 +108,31 @@ export default function LandingPage() {
       {/* Trust Bar */}
       <div className="border-y border-slate-100 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex flex-wrap justify-center gap-8 md:gap-16 text-slate-400 text-sm font-semibold uppercase tracking-wider items-center">
-          <span className="flex items-center gap-2"><ShieldCheck size={16} /> GDPR Compliant</span>
-          <span className="flex items-center gap-2"><ShieldCheck size={16} /> BSI Compliant</span>
-          <span className="flex items-center gap-2"><Lock size={16} /> SOC2 Type II</span>
-          <span className="flex items-center gap-2"><Server size={16} /> FinTech Secure</span>
-          <span className="flex items-center gap-2"><Database size={16} /> HIPAA Ready</span>
+          <span className="flex items-center gap-2"><ShieldCheck size={16} /> CISO APPROVED</span>
+          <span className="flex items-center gap-2"><Lock size={16} /> NO LEGAL REVIEW REQUIRED</span>
+          <span className="flex items-center gap-2"><Server size={16} /> AWS NITRO NATIVE</span>
+          <span className="flex items-center gap-2"><Database size={16} /> ZERO DATA STORED</span>
         </div>
       </div>
 
-      {/* Built for Performance Engineering (Platform) */}
+      {/* How It Works (Platform) */}
       <div id="platform" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">Built for Performance Engineering</h2>
-          <p className="text-slate-600">Automate the generation of high-fidelity synthetic data without writing a single line of privacy logic.</p>
+          <h2 className="text-3xl font-bold text-slate-900 mb-4">The Smartest Way to Scale Ad Spend</h2>
+          <p className="text-slate-600">Start with our 15-minute CAPI proxy wedge to immediately boost ROAS, then upgrade to full autonomous bidding.</p>
         </div>
 
         <div className="grid md:grid-cols-3 gap-8">
           {[
-            { step: '01', title: 'Ingest', icon: Lock, desc: 'Securely connect your 1st party data sources via API or Direct SQL. FaktorOS handles encryption at rest and in transit before preprocessing.' },
-            { step: '02', title: 'Synthesize', icon: Cpu, desc: 'Generate high-fidelity synthetic twins via the FaktorOS GAN Engine. Our models preserve 99% of statistical variance while scrubbing all PII.' },
-            { step: '03', title: 'Activate', icon: ArrowRight, desc: 'Stream privacy-safe signals directly to ad platforms like Meta, Google, and Tiktok to fuel their machine learning algorithms.' }
+            { step: '01', title: 'The Wedge: Signal Recovery', icon: Zap, desc: 'Replace a single URL in your Meta CAPI config. 15-minute integration. Immediate 15-20% ROAS improvement from restored signals lost to iOS 14.5.' },
+            { step: '02', title: 'Zero-Retention Routing', icon: Lock, desc: 'All customer data is processed in volatile memory and cryptographically destroyed after each operation. Existing solutions store your data — we don\'t.' },
+            { step: '03', title: 'Autonomous Action', icon: Cpu, desc: 'Our AI agent monitors performance 24/7. It pauses underperforming ad sets and reallocates budget to winners. We act, autonomously.' }
           ].map((item, i) => (
             <div key={i} className="bg-white border border-slate-100 shadow-sm rounded-2xl p-8 hover:shadow-md transition-shadow">
               <div className="w-12 h-12 bg-slate-900 rounded-xl flex items-center justify-center text-white mb-6">
                 <item.icon size={24} />
               </div>
-              <div className="text-xs font-bold text-primary-500 tracking-wider mb-2">STEP {item.step}</div>
+              <div className="text-xs font-bold text-primary-500 tracking-wider mb-2">PHASE {item.step}</div>
               <h3 className="text-xl font-bold text-slate-900 mb-3">{item.title}</h3>
               <p className="text-slate-600 text-sm leading-relaxed">{item.desc}</p>
             </div>
@@ -137,25 +140,25 @@ export default function LandingPage() {
         </div>
       </div>
 
-      {/* The Math Behind the Clean Room (Science) */}
-      <div id="science" className="bg-slate-900 text-white py-24">
+      {/* Zero-Retention Infrastructure (Science) */}
+      <div id="infrastructure" className="bg-slate-900 text-white py-24">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="lg:grid lg:grid-cols-2 gap-16 items-center bg-slate-800/50 rounded-3xl p-8 lg:p-12 border border-slate-700/50">
             <div>
               <h2 className="text-3xl lg:text-4xl font-bold mb-4">
-                The Math Behind the <br /><span className="text-primary-400">Clean Room</span>
+                The Only Ad Agent <br /><span className="text-primary-400">CISOs Approve</span>
               </h2>
               <p className="text-slate-400 mb-8 leading-relaxed text-sm lg:text-base">
-                Our differential privacy engine ensures that no single individual can be re-identified, while maintaining the statistical integrity needed for ad algorithm training.
+                Competitors like Stape.io and Triple Whale store your customer data, creating massive legal exposure. We built an execution layer that physically cannot retain data.
               </p>
               <div className="space-y-6">
                 <div className="flex items-start">
                   <div className="bg-primary-500/20 text-primary-400 p-1 rounded-full mr-4 mt-1">
-                    <ShieldCheck size={16} />
+                    <Server size={16} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-white text-sm">99.9% Differential Privacy</h4>
-                    <p className="text-slate-400 text-sm mt-1">Mathematically proven privacy guarantees (ε &lt; 0.1).</p>
+                    <h4 className="font-semibold text-white text-sm">Hardware-Enforced Ephemeral Processing</h4>
+                    <p className="text-slate-400 text-sm mt-1">Built entirely on AWS Nitro Enclaves. Processing happens in isolated, volatile memory without persistent storage.</p>
                   </div>
                 </div>
                 <div className="flex items-start">
@@ -163,51 +166,76 @@ export default function LandingPage() {
                     <ShieldCheck size={16} />
                   </div>
                   <div>
-                    <h4 className="font-semibold text-white text-sm">Variance Retention</h4>
-                    <p className="text-slate-400 text-sm mt-1">Preserve multi-dimensional correlations for complex modeling.</p>
+                    <h4 className="font-semibold text-white text-sm">Cryptographic Memory Wiping</h4>
+                    <p className="text-slate-400 text-sm mt-1">After every API dispatch, memory buffers are explicitly overwritten with null bytes. Mathematically verified zero-retention.</p>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mt-12 lg:mt-0 relative aspect-video bg-slate-900 rounded-xl border border-slate-700 p-6">
-              <div className="flex justify-between items-center mb-6">
-                <div className="text-xs font-semibold tracking-wider text-slate-400">UTILITY VS PRIVACY LEAKAGE</div>
-                <div className="flex space-x-4 text-[10px]">
-                  <span className="flex items-center text-primary-400"><span className="w-2 h-2 rounded-full bg-primary-400 mr-2"></span> Model Performance</span>
-                  <span className="flex items-center text-slate-500"><span className="w-2 h-2 rounded-full bg-slate-500 mr-2"></span> Privacy Leakage</span>
-                </div>
-              </div>
-              {/* Mock Chart */}
-              <div className="relative h-40 w-full border-b border-l border-slate-700">
-                <svg className="absolute inset-0 h-full w-full" preserveAspectRatio="none" viewBox="0 0 100 100">
-                  {/* Model Performance Curve */}
-                  <path d="M0,90 Q 30,85 50,50 T 100,20" fill="none" stroke="#0ea5e9" strokeWidth="3" vectorEffect="non-scaling-stroke" />
-                  {/* Privacy Leakage Curve */}
-                  <path d="M0,95 Q 50,95 100,95" fill="none" stroke="#64748b" strokeWidth="2" strokeDasharray="4 4" vectorEffect="non-scaling-stroke" />
-                </svg>
-                <div className="absolute bottom-2 right-2 text-[8px] text-slate-500">Epsilon Optimization (ε)</div>
-              </div>
+            <div className="mt-12 lg:mt-0 relative aspect-video bg-slate-900 rounded-xl border border-slate-700 p-6 flex flex-col justify-center font-mono">
+              <div className="text-xs text-slate-400 mb-4 border-b border-slate-700 pb-2">aws-nitro-enclaves-nsm-api</div>
+              <div className="text-xs text-green-400 mb-2">&gt; Allocating strict bytearray buffer for PII...</div>
+              <div className="text-xs text-slate-300 mb-2">&gt; Calculating SHA-256 hash...</div>
+              <div className="text-xs text-primary-400 mb-2">&gt; [NSM] Generating Attestation Document...</div>
+              <div className="text-xs text-green-400 mb-2">&gt; [MEMORY OPS] Address zeroed to 0x00.</div>
+              <div className="text-xs text-slate-500 mt-4">System is Zero-Retention. No raw PII exists in persistent storage.</div>
             </div>
           </div>
         </div>
       </div>
 
-      {/* CTA Section (Pricing/Solutions Hook) */}
-      <div id="solutions" className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-24 text-center">
-        <h2 id="pricing" className="text-4xl font-bold text-slate-900 mb-6">Ready to reclaim your ROAS?</h2>
-        <p className="text-lg text-slate-600 mb-10">
-          Join 50+ enterprise teams using FaktorOS to drive ad performance in a post-cookie world.
-        </p>
-        <div className="flex flex-col sm:flex-row justify-center items-center space-y-4 sm:space-y-0 sm:space-x-4 mb-8">
-          <Link href="/sign-up" className="bg-primary-500 text-white px-8 py-3.5 rounded-lg font-semibold hover:bg-primary-600 transition-colors w-full sm:w-auto text-center shadow-lg shadow-primary-500/30">
-            Start Your Free Trial
-          </Link>
-          <button className="bg-white border text-center border-slate-200 text-slate-700 px-8 py-3.5 rounded-lg font-semibold hover:bg-slate-50 transition-colors w-full sm:w-auto">
-            Talk to an Expert
-          </button>
+      {/* Pricing Section */}
+      <div id="pricing" className="bg-slate-50 py-24">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl font-bold text-slate-900 mb-4">Pricing Built for Scale</h2>
+            <p className="text-slate-600">From recovering lost signal to fully autonomous AI execution.</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+            {/* SME Fast-Lane */}
+            <div className="bg-white border border-slate-200 rounded-3xl p-8 shadow-sm">
+              <h3 className="text-2xl font-bold text-slate-900 mb-2">SME Fast-Lane</h3>
+              <p className="text-slate-500 text-sm mb-6 h-10">Immediate profit recovery through superior CAPI proxy routing.</p>
+              <div className="mb-8">
+                <span className="text-4xl font-bold text-slate-900">$325</span>
+                <span className="text-slate-500">/month</span>
+              </div>
+              <ul className="space-y-4 mb-8 text-sm text-slate-600">
+                <li className="flex items-center"><ShieldCheck size={16} className="text-green-500 mr-2" /> 15-minute Meta CAPI integration</li>
+                <li className="flex items-center"><ShieldCheck size={16} className="text-green-500 mr-2" /> ~20% signal loss recovery</li>
+                <li className="flex items-center"><ShieldCheck size={16} className="text-green-500 mr-2" /> Analytics Dashboard</li>
+                <li className="flex items-center"><ShieldCheck size={16} className="text-green-500 mr-2" /> Basic Attestation Preview</li>
+              </ul>
+              <button className="w-full bg-white border-2 border-primary-500 text-primary-600 py-3 rounded-xl font-semibold hover:bg-primary-50 transition-colors">
+                Start Free Trial
+              </button>
+            </div>
+
+            {/* Enterprise Agentic DSP */}
+            <div className="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-xl relative overflow-hidden">
+              <div className="absolute top-0 right-0 bg-primary-500 text-white text-xs font-bold px-3 py-1 rounded-bl-lg uppercase tracking-wider">
+                Full AI Power
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2">Agency + Agentic DSP</h3>
+              <p className="text-slate-400 text-sm mb-6 h-10">Hardware-enforced ephemeral routing and autonomous AI bidding.</p>
+              <div className="mb-8">
+                <span className="text-4xl font-bold text-white">$2,700</span>
+                <span className="text-slate-400">/month</span>
+              </div>
+              <ul className="space-y-4 mb-8 text-sm text-slate-300">
+                <li className="flex items-center"><ArrowRight size={16} className="text-primary-400 mr-2" /> Full Autonomous AI Bidding Agent</li>
+                <li className="flex items-center"><ArrowRight size={16} className="text-primary-400 mr-2" /> 24/7 Ad Set Optimization</li>
+                <li className="flex items-center"><ArrowRight size={16} className="text-primary-400 mr-2" /> AWS Nitro Enclaves Zero-Retention</li>
+                <li className="flex items-center"><ArrowRight size={16} className="text-primary-400 mr-2" /> Enterprise CISO Compliance Pack</li>
+              </ul>
+              <button className="w-full bg-primary-500 text-white py-3 rounded-xl font-semibold hover:bg-primary-600 transition-colors">
+                Contact Sales
+              </button>
+            </div>
+          </div>
         </div>
-        <p className="text-xs text-slate-400">No credit card required. SOC2 Type II compliance documents available upon request.</p>
       </div>
 
       {/* Footer */}
@@ -218,7 +246,7 @@ export default function LandingPage() {
               <div className="mb-4">
                 <FaktorOSWordmark size={28} />
               </div>
-              <p className="text-xs text-slate-500 mb-6">The world's leading synthetic data clean room for performance marketing, built by privacy engineers, for growth teams.</p>
+              <p className="text-xs text-slate-500 mb-6">The only ad agent built on zero-retention infrastructure.</p>
               <div className="flex space-x-4">
                 <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-600 cursor-pointer transition-colors"><span className="text-xs font-bold">X</span></div>
                 <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-600 cursor-pointer transition-colors"><span className="text-xs font-bold">in</span></div>
@@ -228,36 +256,24 @@ export default function LandingPage() {
             <div>
               <h4 className="font-bold text-slate-900 mb-4 text-sm">Product</h4>
               <ul className="space-y-3 text-sm text-slate-500">
-                <li><a href="#platform" className="hover:text-slate-900 transition-colors cursor-pointer">GAN Engine</a></li>
-                <li><a href="/clean-room" className="hover:text-slate-900 transition-colors cursor-pointer">Clean Room</a></li>
-                <li><a href="#platform" className="hover:text-slate-900 transition-colors cursor-pointer">Integrations</a></li>
-                <li><a href="#science" className="hover:text-slate-900 transition-colors cursor-pointer">Security</a></li>
-              </ul>
-            </div>
-
-            <div>
-              <h4 className="font-bold text-slate-900 mb-4 text-sm">Resources</h4>
-              <ul className="space-y-3 text-sm text-slate-500">
-                <li><a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-slate-900 transition-colors cursor-pointer">Documentation</a></li>
-                <li><a href="https://github.com" target="_blank" rel="noreferrer" className="hover:text-slate-900 transition-colors cursor-pointer">API Reference</a></li>
-                <li><a href="#science" className="hover:text-slate-900 transition-colors cursor-pointer">Privacy Guide</a></li>
-                <li><a href="#platform" className="hover:text-slate-900 transition-colors cursor-pointer">Case Studies</a></li>
+                <li><a href="#platform" className="hover:text-slate-900 transition-colors cursor-pointer">Autonomous Agent</a></li>
+                <li><a href="#infrastructure" className="hover:text-slate-900 transition-colors cursor-pointer">AWS Nitro Enclaves</a></li>
+                <li><a href="#pricing" className="hover:text-slate-900 transition-colors cursor-pointer">Pricing</a></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-bold text-slate-900 mb-4 text-sm">Company</h4>
               <ul className="space-y-3 text-sm text-slate-500">
-                <li><a href="#solutions" className="hover:text-slate-900 transition-colors cursor-pointer">About Us</a></li>
-                <li><a href="/sign-up" className="hover:text-slate-900 transition-colors cursor-pointer">Careers</a></li>
-                <li><a href="#solutions" className="hover:text-slate-900 transition-colors cursor-pointer">Privacy Policy</a></li>
-                <li><a href="#solutions" className="hover:text-slate-900 transition-colors cursor-pointer">Terms of Service</a></li>
+                <li><a href="#" className="hover:text-slate-900 transition-colors cursor-pointer">About Us</a></li>
+                <li><a href="#" className="hover:text-slate-900 transition-colors cursor-pointer">Careers</a></li>
+                <li><a href="#" className="hover:text-slate-900 transition-colors cursor-pointer">Privacy Policy</a></li>
               </ul>
             </div>
           </div>
 
           <div className="border-t border-slate-100 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-slate-400">
-            <p>© 2026 FaktorOS Labs, Inc. All rights reserved.</p>
+            <p>© 2026 FaktorOS. All rights reserved.</p>
             <div className="flex items-center space-x-2 mt-4 md:mt-0">
               <span className="w-2 h-2 rounded-full bg-green-500"></span>
               <span>ALL SYSTEMS OPERATIONAL</span>

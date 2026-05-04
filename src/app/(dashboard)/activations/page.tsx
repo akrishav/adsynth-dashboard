@@ -41,30 +41,68 @@ export default function ActivationsPage() {
 
         setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Syncing" } : a));
 
-        const delay = (ms: number) => new Promise(res => setTimeout(res, ms));
-
         try {
-            await delay(800);
-            setSyncState(prev => ({ ...prev, message: `Authenticating with ${destination} API...`, progress: 15 }));
-            
-            await delay(1200);
-            setSyncState(prev => ({ ...prev, message: "Validating synthetic schema mapping...", progress: 35 }));
-            
-            await delay(1000);
-            setSyncState(prev => ({ ...prev, message: "Streaming encrypted segments...", progress: 60 }));
-            
-            await delay(1500);
-            setSyncState(prev => ({ ...prev, message: "Awaiting destination ingestion acknowledgment...", progress: 85 }));
-            
-            await delay(1000);
-            setSyncState(prev => ({ ...prev, message: "Sync Completed Successfully", progress: 100, complete: true }));
-            
-            setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Active" } : a));
-            
-            // Optionally record activation logically here if we want database persistence
+            // Real fetch to the secure sync backend
+            const response = await fetch("http://localhost:8000/api/activations/secure-sync", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify({
+                    audience_name: audienceName,
+                    destination: destination,
+                    raw_data: [
+                        { name: "Demo User 1", email: "demo1@faktoros.com" },
+                        { name: "Demo User 2", email: "demo2@faktoros.com" }
+                    ] // In production, backend would pull this from DB directly based on audience ID
+                })
+            });
+
+            if (!response.body) throw new Error("No response body");
+
+            const reader = response.body.getReader();
+            const decoder = new TextDecoder();
+            let buffer = "";
+
+            while (true) {
+                const { value, done } = await reader.read();
+                if (done) break;
+                
+                buffer += decoder.decode(value, { stream: true });
+                const lines = buffer.split("\n");
+                
+                // Keep the last incomplete line in the buffer
+                buffer = lines.pop() || "";
+
+                for (const line of lines) {
+                    if (line.trim()) {
+                        const parsed = JSON.parse(line);
+                        
+                        if (parsed.error) {
+                            throw new Error(parsed.error);
+                        }
+                        
+                        setSyncState(prev => ({
+                            ...prev,
+                            message: parsed.status,
+                            progress: parsed.progress,
+                            complete: parsed.progress === 100
+                        }));
+                        
+                        if (parsed.progress === 100) {
+                            setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Active" } : a));
+                        }
+                    }
+                }
+            }
         } catch (error) {
-            alert("Connection error occurred.");
-            setSyncState(prev => ({ ...prev, active: false }));
+            console.error("Sync error:", error);
+            setSyncState(prev => ({ 
+                ...prev, 
+                message: "Connection error. Secure pipeline failed.",
+                active: true,
+                progress: 0 
+            }));
             setAudiences(prev => prev.map(a => a.name === audienceName ? { ...a, status: "Paused" } : a));
         }
     };
