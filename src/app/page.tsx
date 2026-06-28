@@ -249,7 +249,7 @@ export default function LandingPage() {
               <p className="text-xs text-slate-500 mb-6">The only ad agent built on zero-retention infrastructure.</p>
               <div className="flex space-x-4">
                 <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-600 cursor-pointer transition-colors"><span className="text-xs font-bold">X</span></div>
-                <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-600 cursor-pointer transition-colors"><span className="text-xs font-bold">in</span></div>
+                <a href="https://www.linkedin.com/company/faktoros/?viewAsMember=true" target="_blank" rel="noopener noreferrer" className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-600 cursor-pointer transition-colors"><span className="text-xs font-bold">in</span></a>
               </div>
             </div>
 
