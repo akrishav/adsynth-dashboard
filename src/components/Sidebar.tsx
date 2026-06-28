@@ -22,6 +22,8 @@ import { cn } from "@/lib/utils";
 
 const navItems = [
     { name: "Overview (ROI)", href: "/dashboard", icon: LayoutDashboard },
+    { name: "Clean Room Workspace", href: "/clean-room", icon: Box },
+    { name: "Proof of Privacy", href: "/compliance", icon: ShieldCheck },
     { name: "Zero-Retention Sync", href: "/activations", icon: Zap },
     { name: "Agent Rules", href: "/models", icon: Cpu },
     { name: "Data Sources", href: "/data-sources", icon: Database },
