@@ -438,9 +438,9 @@ export default function LandingPage() {
             <div>
               <h4 className="font-bold text-slate-900 mb-4 text-xs uppercase tracking-wider">Company</h4>
               <ul className="space-y-3 text-xs text-slate-500 font-medium">
-                <li><Link href="#" className="hover:text-slate-900 transition-colors">About Us</Link></li>
-                <li><Link href="#" className="hover:text-slate-900 transition-colors">Careers</Link></li>
-                <li><Link href="#" className="hover:text-slate-900 transition-colors">Privacy Policy</Link></li>
+                <li><Link href="/about" className="hover:text-slate-900 transition-colors">About Us</Link></li>
+                <li><Link href="/careers" className="hover:text-slate-900 transition-colors">Careers</Link></li>
+                <li><Link href="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</Link></li>
               </ul>
             </div>
           </div>
