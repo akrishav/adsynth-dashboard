@@ -29,11 +29,12 @@ export default function LandingPage() {
               <FaktorOSWordmark size={32} />
             </div>
 
-            <div className="hidden md:flex space-x-8 text-xs font-bold uppercase tracking-wider text-slate-500">
-              <Link href="#platform" className="hover:text-slate-900 transition-colors">How It Works</Link>
-              <Link href="#infrastructure" className="hover:text-slate-900 transition-colors">Infrastructure</Link>
-              <Link href="#connectors" className="hover:text-slate-900 transition-colors">Connectors</Link>
-              <Link href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</Link>
+            <div className="hidden md:flex space-x-6 text-xs font-bold uppercase tracking-wider text-slate-500">
+              <Link href="/solutions" className="hover:text-slate-900 transition-colors">Solutions</Link>
+              <Link href="/platform" className="hover:text-slate-900 transition-colors">Platform</Link>
+              <Link href="/use-cases" className="hover:text-slate-900 transition-colors">Use Cases</Link>
+              <Link href="/resources" className="hover:text-slate-900 transition-colors">Resources</Link>
+              <Link href="/company" className="hover:text-slate-900 transition-colors">Company</Link>
             </div>
 
             <div className="flex items-center space-x-4 text-xs font-bold uppercase tracking-wider">
@@ -429,17 +430,17 @@ export default function LandingPage() {
             <div>
               <h4 className="font-bold text-slate-900 mb-4 text-xs uppercase tracking-wider">Product</h4>
               <ul className="space-y-3 text-xs text-slate-500 font-medium">
-                <li><Link href="#platform" className="hover:text-slate-900 transition-colors">How It Works</Link></li>
-                <li><Link href="#infrastructure" className="hover:text-slate-900 transition-colors">Zero-Retention</Link></li>
-                <li><Link href="#connectors" className="hover:text-slate-900 transition-colors">Connectors</Link></li>
+                <li><Link href="/solutions" className="hover:text-slate-900 transition-colors">Solutions</Link></li>
+                <li><Link href="/platform" className="hover:text-slate-900 transition-colors">Platform</Link></li>
+                <li><Link href="/use-cases" className="hover:text-slate-900 transition-colors">Use Cases</Link></li>
               </ul>
             </div>
 
             <div>
               <h4 className="font-bold text-slate-900 mb-4 text-xs uppercase tracking-wider">Company</h4>
               <ul className="space-y-3 text-xs text-slate-500 font-medium">
+                <li><Link href="/company" className="hover:text-slate-900 transition-colors">Company Hub</Link></li>
                 <li><Link href="/about" className="hover:text-slate-900 transition-colors">About Us</Link></li>
-                <li><Link href="/careers" className="hover:text-slate-900 transition-colors">Careers</Link></li>
                 <li><Link href="/privacy" className="hover:text-slate-900 transition-colors">Privacy Policy</Link></li>
               </ul>
             </div>
