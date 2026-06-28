@@ -382,7 +382,7 @@ export default function LandingPage() {
                 <li className="flex items-center"><CheckCircle2 size={14} className="text-green-500 mr-2 shrink-0" /> Analytics Dashboard access</li>
                 <li className="flex items-center"><CheckCircle2 size={14} className="text-green-500 mr-2 shrink-0" /> Basic Attestation Preview</li>
               </ul>
-              <Link href="/dashboard" className="w-full inline-block text-center bg-white border-2 border-primary-500 text-primary-600 py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-primary-50 transition-colors">
+              <Link href="/checkout" className="w-full inline-block text-center bg-white border-2 border-primary-500 text-primary-600 py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-primary-50 transition-colors">
                 Start Free Trial
               </Link>
             </div>
