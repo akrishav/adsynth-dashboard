@@ -39,7 +39,7 @@ export default function LandingPage() {
 
             <div className="flex items-center space-x-4 text-xs font-bold uppercase tracking-wider">
               <Link href="mailto:luca.hoffmann@faktoros.com" className="text-slate-600 hover:text-slate-900 transition-colors px-3 py-2">Contact Us</Link>
-              <Link href="mailto:luca.hoffmann@faktoros.com?subject=Book%20a%20Demo" className="bg-primary-500 hover:bg-primary-600 text-white px-5 py-2.5 rounded-lg transition-all shadow-sm hover:shadow shadow-primary-500/20">
+              <Link href="/book-demo" className="bg-primary-500 hover:bg-primary-600 text-white px-5 py-2.5 rounded-lg transition-all shadow-sm hover:shadow shadow-primary-500/20">
                 Book a Demo
               </Link>
             </div>
@@ -67,7 +67,7 @@ export default function LandingPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-              <Link href="mailto:luca.hoffmann@faktoros.com?subject=Book%20a%20Demo" className="bg-slate-900 text-white px-7 py-4 rounded-xl text-xs font-bold tracking-wider uppercase hover:bg-slate-800 transition-all flex items-center justify-center group shadow-lg shadow-slate-900/10">
+              <Link href="/book-demo" className="bg-slate-900 text-white px-7 py-4 rounded-xl text-xs font-bold tracking-wider uppercase hover:bg-slate-800 transition-all flex items-center justify-center group shadow-lg shadow-slate-900/10">
                 Book a Demo
                 <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform text-primary-400" />
               </Link>
@@ -382,7 +382,7 @@ export default function LandingPage() {
                 <li className="flex items-center"><CheckCircle2 size={14} className="text-green-500 mr-2 shrink-0" /> Analytics Dashboard access</li>
                 <li className="flex items-center"><CheckCircle2 size={14} className="text-green-500 mr-2 shrink-0" /> Basic Attestation Preview</li>
               </ul>
-              <Link href="mailto:luca.hoffmann@faktoros.com?subject=Book%20a%20Demo" className="w-full inline-block text-center bg-white border-2 border-primary-500 text-primary-600 py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-primary-50 transition-colors">
+              <Link href="/book-demo" className="w-full inline-block text-center bg-white border-2 border-primary-500 text-primary-600 py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-primary-50 transition-colors">
                 Book a Demo
               </Link>
             </div>

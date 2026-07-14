@@ -94,7 +94,7 @@ export default function SolutionsPage() {
                   ))}
                 </ul>
 
-                <Link href="mailto:luca.hoffmann@faktoros.com?subject=Book%20a%20Demo" className="w-full inline-block text-center bg-slate-900 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-slate-800 transition-colors">
+                <Link href="/book-demo" className="w-full inline-block text-center bg-slate-900 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-slate-800 transition-colors">
                   Book a Demo
                 </Link>
               </div>

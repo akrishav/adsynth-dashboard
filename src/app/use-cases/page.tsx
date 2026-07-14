@@ -72,7 +72,7 @@ export default function UseCasesPage() {
                 <h3 className="text-xl font-bold text-slate-900">{c.title}</h3>
                 <p className="text-slate-500 text-xs leading-relaxed">{c.desc}</p>
               </div>
-              <Link href="mailto:luca.hoffmann@faktoros.com?subject=Book%20a%20Demo" className="bg-slate-900 text-white px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors flex items-center shrink-0 w-full md:w-auto justify-center group">
+              <Link href="/book-demo" className="bg-slate-900 text-white px-5 py-3 rounded-xl text-xs font-bold uppercase tracking-wider hover:bg-slate-800 transition-colors flex items-center shrink-0 w-full md:w-auto justify-center group">
                 Book a Demo
                 <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform text-primary-400" />
               </Link>
