@@ -171,10 +171,10 @@ export default function BookDemoPage() {
                       <input 
                         type="text" 
                         required
-                        placeholder="luca.hoffmann@faktoros.com"
+                        autoComplete="off"
                         value={name}
                         onChange={(e) => setName(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-medium focus:ring-2 focus:ring-primary-500 focus:outline-none placeholder:text-slate-350 transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-medium focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
                       />
                     </div>
                     <div>
@@ -184,10 +184,10 @@ export default function BookDemoPage() {
                       <input 
                         type="email" 
                         required
-                        placeholder="luca@yourbrand.com"
+                        autoComplete="off"
                         value={email}
                         onChange={(e) => setEmail(e.target.value)}
-                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-medium focus:ring-2 focus:ring-primary-500 focus:outline-none placeholder:text-slate-355 transition-all"
+                        className="w-full px-3.5 py-2.5 rounded-xl border border-slate-200 text-xs font-medium focus:ring-2 focus:ring-primary-500 focus:outline-none transition-all"
                       />
                     </div>
                   </div>
