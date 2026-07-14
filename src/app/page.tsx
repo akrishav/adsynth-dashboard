@@ -38,9 +38,9 @@ export default function LandingPage() {
             </div>
 
             <div className="flex items-center space-x-4 text-xs font-bold uppercase tracking-wider">
-              <Link href="/sign-in" className="text-slate-600 hover:text-slate-900 transition-colors px-3 py-2">Log In</Link>
-              <Link href="/dashboard" className="bg-primary-500 hover:bg-primary-600 text-white px-5 py-2.5 rounded-lg transition-all shadow-sm hover:shadow shadow-primary-500/20">
-                Launch Console
+              <Link href="mailto:luca.hoffmann@faktoros.com" className="text-slate-600 hover:text-slate-900 transition-colors px-3 py-2">Contact Us</Link>
+              <Link href="mailto:luca.hoffmann@faktoros.com?subject=Book%20a%20Demo" className="bg-primary-500 hover:bg-primary-600 text-white px-5 py-2.5 rounded-lg transition-all shadow-sm hover:shadow shadow-primary-500/20">
+                Book a Demo
               </Link>
             </div>
           </div>
@@ -67,12 +67,12 @@ export default function LandingPage() {
             </p>
             
             <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-4">
-              <Link href="/dashboard" className="bg-slate-900 text-white px-7 py-4 rounded-xl text-xs font-bold tracking-wider uppercase hover:bg-slate-800 transition-all flex items-center justify-center group shadow-lg shadow-slate-900/10">
-                View Live Terminal
+              <Link href="mailto:luca.hoffmann@faktoros.com?subject=Book%20a%20Demo" className="bg-slate-900 text-white px-7 py-4 rounded-xl text-xs font-bold tracking-wider uppercase hover:bg-slate-800 transition-all flex items-center justify-center group shadow-lg shadow-slate-900/10">
+                Book a Demo
                 <ArrowRight size={14} className="ml-2 group-hover:translate-x-1 transition-transform text-primary-400" />
               </Link>
-              <Link href="mailto:contact@faktoros.com" className="bg-white border border-slate-200 text-slate-700 px-7 py-4 rounded-xl text-xs font-bold tracking-wider uppercase hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center shadow-sm">
-                Book Enterprise Demo
+              <Link href="mailto:luca.hoffmann@faktoros.com" className="bg-white border border-slate-200 text-slate-700 px-7 py-4 rounded-xl text-xs font-bold tracking-wider uppercase hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center shadow-sm">
+                Contact Us
               </Link>
             </div>
 
@@ -382,8 +382,8 @@ export default function LandingPage() {
                 <li className="flex items-center"><CheckCircle2 size={14} className="text-green-500 mr-2 shrink-0" /> Analytics Dashboard access</li>
                 <li className="flex items-center"><CheckCircle2 size={14} className="text-green-500 mr-2 shrink-0" /> Basic Attestation Preview</li>
               </ul>
-              <Link href="/checkout" className="w-full inline-block text-center bg-white border-2 border-primary-500 text-primary-600 py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-primary-50 transition-colors">
-                Start Free Trial
+              <Link href="mailto:luca.hoffmann@faktoros.com?subject=Book%20a%20Demo" className="w-full inline-block text-center bg-white border-2 border-primary-500 text-primary-600 py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-primary-50 transition-colors">
+                Book a Demo
               </Link>
             </div>
 
@@ -404,8 +404,8 @@ export default function LandingPage() {
                 <li className="flex items-center"><CheckCircle2 size={14} className="text-primary-400 mr-2 shrink-0" /> AWS Nitro Enclaves Zero-Retention</li>
                 <li className="flex items-center"><CheckCircle2 size={14} className="text-primary-400 mr-2 shrink-0" /> Enterprise CISO Compliance Pack</li>
               </ul>
-              <Link href="mailto:contact@faktoros.com" className="w-full inline-block text-center bg-primary-500 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-primary-600 transition-colors">
-                Contact Sales
+              <Link href="mailto:luca.hoffmann@faktoros.com" className="w-full inline-block text-center bg-primary-500 text-white py-3 rounded-xl font-bold text-xs uppercase tracking-wider hover:bg-primary-600 transition-colors">
+                Contact Us
               </Link>
             </div>
           </div>
